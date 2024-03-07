@@ -15,7 +15,9 @@ const HeroSection = () => {
   return (
     <div className="flex justify-between   ">
       <div className="md:p-12 p-4 h-auto bg-blue-100 w-full">
-        <p className="font-latto text-xs md:mt-8 md:text-lg">Welcomes to CarBySell</p>
+        <p className="font-latto text-xs md:mt-8 md:text-lg">
+          Welcomes to CarBySell
+        </p>
         <p className="text-md md:text-4xl font-Merriweather ">
           Your Journey to Exceptional
         </p>
