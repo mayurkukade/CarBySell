@@ -4,6 +4,8 @@ import AppLayout from "./ui/AppLayout";
 import { LoginCard } from "./pages/LoginCard";
 import { SimpleRegistrationForm } from "./pages/SimpleRegistrationForm";
 
+import BuyCar from "./pages/BuyCar";
+
 export default function App() {
   return (
     <Routes>
@@ -11,6 +13,7 @@ export default function App() {
       <Route path="signup" element={<SimpleRegistrationForm />} />
       <Route element={<AppLayout />}>
         <Route path="/" element={<Home />} />
+        <Route path="/carlist" element={<BuyCar/>} />
       </Route>
     </Routes>
   );

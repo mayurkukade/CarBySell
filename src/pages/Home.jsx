@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div>
      <HeroSection/>
-     <div className="mt-[7rem] flex justify-center">
+     <div className="mt-[5rem] flex justify-center">
      <BrandList/>
      </div>
      

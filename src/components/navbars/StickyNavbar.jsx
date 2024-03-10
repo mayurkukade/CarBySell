@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import {
   Navbar,
   Typography,
@@ -9,7 +9,7 @@ import {
 import { Link } from "react-router-dom";
 
 export function StickyNavbar() {
-  const [openNav, setOpenNav] = React.useState(false);
+  const [openNav, setOpenNav] = useState(false);
 
   React.useEffect(() => {
     window.addEventListener(
@@ -26,29 +26,31 @@ export function StickyNavbar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
-          Pages
-        </a>
+       
+          Home
+        
       </Typography>
+      <Link to={'/carlist'}>
       <Typography
         as="li"
         variant="small"
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
-          Account
-        </a>
+        
+          Buy Car
+       
       </Typography>
+      </Link>
       <Typography
         as="li"
         variant="small"
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+        
           Blocks
-        </a>
+     
       </Typography>
       <Typography
         as="li"
@@ -56,9 +58,9 @@ export function StickyNavbar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+       
           Docs
-        </a>
+   
       </Typography>
     </ul>
   );
@@ -68,8 +70,7 @@ export function StickyNavbar() {
       <div className="flex items-center justify-between text-blue-gray-900">
         <Link to={"/"}>
           <Typography
-            as="a"
-            href="#"
+           
             className="mr-4 cursor-pointer py-1.5 font-medium"
           >
             CarBySell

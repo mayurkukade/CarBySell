@@ -41,8 +41,9 @@ const HeroSection = () => {
             value={carBrandState}
             type="text"
           />
-          <Button onClick={submitHandler}>Search</Button>
+          
         </div>
+        <Button onClick={submitHandler} className="mt-2">Search</Button>
       </div>
 
       <div className="absolute  right-0 ">
