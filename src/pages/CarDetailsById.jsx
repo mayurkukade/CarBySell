@@ -25,10 +25,11 @@ const CarDetailsById = () => {
     console.log("navigate");
 
     navigate("/signin");
+    return null
   }
 
-  const { price, brand } = data?.object;
-  console.log(price, brand);
+  const { object: { price, brand } = {} } = data || {};
+ 
 
   // if (isError && error?.status === 401) {
   //     console.log('click')

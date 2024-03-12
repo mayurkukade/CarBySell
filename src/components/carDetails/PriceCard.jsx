@@ -6,8 +6,8 @@ const PriceCard = ({price,brand}) => {
   console.log(price,brand)
   return (
     <CardUi>
-    {price ? <p>{price}</p>  : null}  
-    {brand ? <p>{brand}</p>  : null}  
+    {price ? <p>{price}</p>  : ''}  
+    {brand ? <p>{brand}</p>  : ''}  
     
     </CardUi>
   )
