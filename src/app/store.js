@@ -3,7 +3,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import authSlice from '../features/authSlice';
 import { apiSlice } from '../services/apiSlice';
 import { authApi } from '../services/authAPI';
-import tokenExpirationMiddleware from '../middleware/tokenExpirationMiddleware';
 import { carApi } from '../services/carAPI';
 
 export const store = configureStore({
@@ -14,6 +13,6 @@ export const store = configureStore({
     [carApi.reducerPath]:carApi.reducer
   },
   middleware:(getDefaultMiddleware)=>
-  getDefaultMiddleware().concat(apiSlice.middleware,tokenExpirationMiddleware),
+  getDefaultMiddleware().concat(apiSlice.middleware),
   devTools:true,
 });

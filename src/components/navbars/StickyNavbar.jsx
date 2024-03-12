@@ -5,16 +5,20 @@ import {
   Button,
   IconButton,
   Collapse,
+
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
-
+import { selectToken } from "../../features/authSlice";
 import Cookies from "js-cookie";
 import Profile from "../Profile/Profile";
+import { useSelector } from "react-redux";
 
 export function StickyNavbar() {
   const [openNav, setOpenNav] = useState(false);
- 
-  
+
+
+  const token = useSelector(selectToken)
+  console.log(token)
  
  
   React.useEffect(() => {

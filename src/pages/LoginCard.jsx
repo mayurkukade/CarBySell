@@ -41,12 +41,13 @@ export function LoginCard() {
       console.log(data);
       if (data) {
         console.log(data);
+        
         const jwtDecodes = jwtDecode(data);
-        const jwtDecodesJson = JSON.stringify(jwtDecodes) 
-localStorage.setItem('userInfo',jwtDecodesJson)
+        const jwtDecodesJson = JSON.stringify(jwtDecodes);
+        localStorage.setItem("userInfo", jwtDecodesJson);
         console.log(jwtDecodes);
         dispatch(setToken(data));
-        
+
         navigate("/");
       } else {
         alert("email and password is not match");
