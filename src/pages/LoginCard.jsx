@@ -41,7 +41,7 @@ export function LoginCard() {
       console.log(data);
       if (data) {
         console.log(data);
-        
+
         const jwtDecodes = jwtDecode(data);
         const jwtDecodesJson = JSON.stringify(jwtDecodes);
         localStorage.setItem("userInfo", jwtDecodesJson);
@@ -93,20 +93,21 @@ export function LoginCard() {
             <Button variant="gradient" fullWidth type="submit">
               Sign In
             </Button>
-            <Typography variant="small" className="mt-6 flex justify-center">
+            <div className="flex items-center justify-center mt-4">
+            <Typography variant="small" className=" flex justify-center">
               Don't have an account?{" "}
-              <Link to="/signup">
-                <Typography
-                  as="a"
-                  href="#signup"
-                  variant="small"
-                  color="blue-gray"
-                  className="ml-1 font-bold"
-                >
-                  Sign up
-                </Typography>
-              </Link>
             </Typography>
+            <Link to="/signup">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="ml-1 font-bold"
+              >
+                Sign up
+              </Typography>
+              
+            </Link>
+            </div>
           </CardFooter>
         </form>
       </Card>
