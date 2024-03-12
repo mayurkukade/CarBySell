@@ -15,6 +15,11 @@ const BuyCar = () => {
   console.log(urlState);
   console.log(error);
 
+  if(isLoading){
+    return <p>Loading...</p>
+  }
+ 
+
   if (error?.status == 401) {
     Cookies.remove("token");
     navigate("/signin");

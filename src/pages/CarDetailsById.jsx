@@ -11,6 +11,9 @@ const CarDetailsById = () => {
     const {carId} = useParams()
     
     const {data,isLoading,isError,error} = useGetCarByIdQuery()
+    if(isLoading){
+      return <p>Loading...</p>
+    }
     console.log(data)
     console.log(carId)
     console.log(isLoading)
