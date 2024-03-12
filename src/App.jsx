@@ -5,6 +5,7 @@ import { LoginCard } from "./pages/LoginCard";
 import { SimpleRegistrationForm } from "./pages/SimpleRegistrationForm";
 
 import BuyCar from "./pages/BuyCar";
+import CarDetailsById from "./pages/CarDetailsById";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
       <Route element={<AppLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/carlist" element={<BuyCar/>} />
+        <Route path="/carlist/cardetails/:id" element={<CarDetailsById/>} />
       </Route>
     </Routes>
   );

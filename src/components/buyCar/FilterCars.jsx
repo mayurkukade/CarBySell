@@ -2,16 +2,56 @@ import { useState } from "react";
 
 import CardUi from "../../ui/CardUi";
 import { Button, Slider, Typography } from "@material-tailwind/react";
-
-const FilterCars = () => {
+// eslint-disable-next-line react/prop-types
+const FilterCars = ({ setUrlState }) => {
   const [value, setValue] = useState(200000);
+
+  console.log(value);
+  const [filterForm, setFilterForm] = useState({
+    area: "",
+    year: "",
+    brand: "",
+    model: "",
+    fuelType: "",
+    transmission: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    console.log(name, value);
+    setFilterForm({ ...filterForm, [name]: value });
+  };
+
+  const submitHandle = (e) => {
+    e.preventDefault();
+    const { area, year, brand, model, fuelType, transmission } = filterForm;
+    const minPrice = 3999; // Assuming this is your default minimum price
+    const maxPrice = value; // Maximum price from the slider
+    let url = ``;
+
+    // Append selected filters to the URL if they are not empty
+    if (minPrice) url += `&minPrice=${minPrice}`;
+    if (maxPrice > minPrice) url += `&maxPrice=${maxPrice}`;
+    if (area) url += `&area=${area}`;
+    if (year) url += `&year=${year}`;
+    if (brand) url += `&brand=${brand}`;
+    if (model) url += `&model=${model}`;
+
+    if (transmission) url += `&transmission=${transmission}`;
+    if (fuelType) url += `&fuel_type=${fuelType}`;
+    console.log(fuelType);
+    setUrlState(url);
+
+    // Now you can use the constructed URL for further actions like redirection or API requests
+    console.log("Constructed URL:", url);
+  };
   console.log(new Intl.NumberFormat("en-IN").format(value));
   const formattedAmount = new Intl.NumberFormat("en-IN").format(value);
   console.log(formattedAmount);
   return (
-    <CardUi >
+    <CardUi>
       <div className="space-y-4 ">
-        <form>
+        <form onSubmit={submitHandle}>
           <div className="mb-1 flex flex-col gap-6">
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Price Range
@@ -31,7 +71,12 @@ const FilterCars = () => {
                 onChange={(e) => setValue(e.target.value)}
               />
             </div>
-            <select className="border border-gray-700 h-10 rounded-lg">
+            <select
+              name="area"
+              className="border border-gray-700 h-10 rounded-lg"
+              value={filterForm.area}
+              onChange={handleChange}
+            >
               <option>Select Area</option>
               <option>Wagholi</option>
               <option>Kharadi</option>
@@ -39,7 +84,12 @@ const FilterCars = () => {
               <option>Hinjewadi</option>
               <option>Viman Nagar</option>
             </select>
-            <select className="border border-gray-700 h-10 rounded-lg">
+            <select
+              name="year"
+              onChange={handleChange}
+              value={filterForm.year}
+              className="border border-gray-700 h-10 rounded-lg"
+            >
               <option>Select Year</option>
               <option>2018</option>
               <option>2019</option>
@@ -49,7 +99,12 @@ const FilterCars = () => {
               <option>2023</option>
               <option>2024</option>
             </select>
-            <select className="border border-gray-700 h-10 rounded-lg">
+            <select
+              name="brand"
+              onChange={handleChange}
+              value={filterForm.brand}
+              className="border border-gray-700 h-10 rounded-lg"
+            >
               <option>Select Brand</option>
               <option>Tata</option>
               <option>Honda</option>
@@ -59,8 +114,13 @@ const FilterCars = () => {
               <option>Suzuki</option>
               <option>Volkswagen</option>
             </select>
-            <select className="border border-gray-700 h-10 rounded-lg">
-              <option>Select Brand</option>
+            <select
+              name="model"
+              onChange={handleChange}
+              value={filterForm.model}
+              className="border border-gray-700 h-10 rounded-lg"
+            >
+              <option>Select Model</option>
               <option>Harrier</option>
               <option>Verna</option>
               <option>Swift</option>
@@ -69,27 +129,32 @@ const FilterCars = () => {
               <option>Virtus</option>
               <option>Creata</option>
             </select>
-            <select className="border border-gray-700 h-10 rounded-lg">
+            <select
+              name="fuelType"
+              onChange={handleChange}
+              value={filterForm.fuelType}
+              className="border border-gray-700 h-10 rounded-lg"
+            >
               <option> Fuel Type</option>
               <option>Petrol</option>
               <option>Diesel</option>
               <option>Electric</option>
               <option>Hybrid</option>
-           
             </select>
-            <select className="border border-gray-700 h-10 rounded-lg">
+            <select
+              name="transmission"
+              onChange={handleChange}
+              value={filterForm.transmission}
+              className="border border-gray-700 h-10 rounded-lg"
+            >
               <option> Transmission</option>
               <option>Manual</option>
               <option>Automatic</option>
-            
-           
             </select>
-            
-         
           </div>
           <div className="flex gap-5 mt-5">
-          <Button>Search</Button>
-          <Button>Reset</Button>
+            <Button type="submit">Search</Button>
+            <Button>Reset</Button>
           </div>
         </form>
       </div>

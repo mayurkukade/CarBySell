@@ -8,15 +8,22 @@ import {
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 
+import Cookies from "js-cookie";
+import Profile from "../Profile/Profile";
+
 export function StickyNavbar() {
   const [openNav, setOpenNav] = useState(false);
-
+ 
+  
+ 
+ 
   React.useEffect(() => {
     window.addEventListener(
       "resize",
       () => window.innerWidth >= 960 && setOpenNav(false)
     );
   }, []);
+  
 
   const navList = (
     <ul className="mt-2 mb-4 flex flex-col gap-2 p-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
@@ -79,6 +86,9 @@ export function StickyNavbar() {
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden lg:block">{navList}</div>
           <div className="flex items-center gap-x-1">
+          {
+            Cookies.get('token')? <Profile /> :
+            <>
             <Link to="/signin">
               <Button
                 variant="text"
@@ -97,6 +107,10 @@ export function StickyNavbar() {
                 <span>Sign Up</span>
               </Button>
             </Link>
+            </>
+          }
+          
+           
           </div>
           <IconButton
             variant="text"
