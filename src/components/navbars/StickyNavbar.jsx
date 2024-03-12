@@ -31,6 +31,7 @@ export function StickyNavbar() {
 
   const navList = (
     <ul className="mt-2 mb-4 flex flex-col gap-2 p-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+     <Link to={"/"}>
       <Typography
         as="li"
         variant="small"
@@ -41,6 +42,7 @@ export function StickyNavbar() {
           Home
         
       </Typography>
+      </Link>
       <Link to={'/carlist'}>
       <Typography
         as="li"

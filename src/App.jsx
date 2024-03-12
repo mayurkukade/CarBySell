@@ -14,6 +14,7 @@ export default function App() {
       <Route path="signup" element={<SimpleRegistrationForm />} />
       <Route element={<AppLayout />}>
         <Route path="/" element={<Home />} />
+
         <Route path="/carlist" element={<BuyCar />} />
         <Route path="/carlist/cardetails/:carId" element={<CarDetailsById />} />
       </Route>
