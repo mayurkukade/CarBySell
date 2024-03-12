@@ -1,10 +1,13 @@
+/* eslint-disable react/prop-types */
 import CardUi from "../../ui/CardUi"
 
 
-const PriceCard = () => {
+const PriceCard = ({price,brand}) => {
+  console.log(price,brand)
   return (
     <CardUi>
-      <p>Price</p>
+      <p>{price}</p>
+      <p>{brand}</p>
     </CardUi>
   )
 }

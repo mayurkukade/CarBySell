@@ -1,3 +1,4 @@
+/* eslint-disable no-unsafe-optional-chaining */
 import CarView from "../components/carDetails/CarView";
 import PriceCard from "../components/carDetails/PriceCard";
 import { useParams } from "react-router-dom";
@@ -10,6 +11,7 @@ const CarDetailsById = () => {
   const { carId } = useParams();
 
   const { data, isLoading, isError, error } = useGetCarByIdQuery();
+
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -25,6 +27,9 @@ const CarDetailsById = () => {
     navigate("/signin");
   }
 
+  const { price, brand } = data?.object;
+  console.log(price, brand);
+
   // if (isError && error?.status === 401) {
   //     console.log('click')
   //     Cookies.remove('token')
@@ -38,7 +43,7 @@ const CarDetailsById = () => {
         <CarView />
       </div>
       <div className="p-4 sticky top-0">
-        <PriceCard />
+        <PriceCard price={price} brand={brand} />
       </div>
     </div>
   );

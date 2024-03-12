@@ -1,13 +1,19 @@
-
-import { Input } from "@material-tailwind/react"
+import { Input } from "@material-tailwind/react";
 // eslint-disable-next-line react/prop-types
-const Inputs = ({placeholder,label,name,onChange,value,type}) => {
-    
+const Inputs = ({ placeholder, label, name, onChange, value, type }) => {
   return (
     <div>
-      <Input autoComplete="true"  placeholder={placeholder} label={label} name={name} type={type} onChange={onChange} value={value}  />
+      <Input
+        autoComplete="true"
+        placeholder={placeholder}
+        label={label}
+        name={name}
+        type={type}
+        onChange={onChange}
+        value={value}
+      />
     </div>
-  )
-}
+  );
+};
 
-export default Inputs
+export default Inputs;
