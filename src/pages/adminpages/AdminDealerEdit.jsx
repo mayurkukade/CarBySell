@@ -6,7 +6,7 @@ const AdminDealerEdit = () => {
     console.log(userid)
     console.log(id)
     const [getEditDealer] = useGetAllDealerQuery(userid)
-    
+    console.log(getEditDealer)
   return (
     <div className="mx-auto container">
       <p>AdminDealerEdit</p>

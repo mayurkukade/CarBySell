@@ -17,12 +17,12 @@ const TableComponent = ({ columns, data }) => {
     getTableBodyProps,
     headerGroups,
     page,
-    nextPage,
-    previousPage,
-    canNextPage,
-    canPreviousPage,
-    setGlobalFilter,
-    state,
+    // nextPage,
+    // previousPage,
+    // canNextPage,
+    // canPreviousPage,
+    // setGlobalFilter,
+    // state,
     prepareRow,
   } = useTable(
     {
