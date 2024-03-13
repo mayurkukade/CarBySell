@@ -109,7 +109,7 @@ export default function Admin() {
               </Link>
 
               <Link
-                to={`/editDealerdetails/${cell.row.values.userId}/${cell.row.values.dealer_id}`}
+                to={`/admin/dealer/edit/${cell.row.values.userId}/${cell.row.values.dealer_id}`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

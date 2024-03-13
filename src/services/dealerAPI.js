@@ -24,7 +24,15 @@ export const dealerAPI = apiSlice.injectEndpoints({
       }),
       providesTags: ["Dealer"],
     }),
+    getEditDealer:builder.mutation({
+        query:(userid)=>({
+            url:`/dealer/updateDealer/${userid}`,
+            method:"PUT",
+            body:userid
+        }),
+        invalidatesTags:["Dealer"]
+    })
   }),
 });
 
-export const { useGetAllDealerQuery, useDeleteDealerMutation,useGetDealerQuery } = dealerAPI;
+export const { useGetAllDealerQuery, useDeleteDealerMutation,useGetDealerQuery,useGetEditDealerMutation } = dealerAPI;

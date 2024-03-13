@@ -10,6 +10,7 @@ import Admin from "./pages/adminpages/Admin";
 import AdminMiddleware from "./middleware/AdminMiddleware";
 import { onlyAdmin } from "./components/config/Roles";
 import AdminDealerInfo from "./pages/adminpages/AdminDealerInfo";
+import AdminDealerEdit from "./pages/adminpages/AdminDealerEdit";
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
         >
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin/dealer/info/:id" element={<AdminDealerInfo/>} />
+          <Route path="/admin/dealer/edit/:userid/:id" element={<AdminDealerEdit/>} />
         </Route>
       </Route>
     </Routes>
