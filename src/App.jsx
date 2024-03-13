@@ -6,17 +6,28 @@ import { SimpleRegistrationForm } from "./pages/SimpleRegistrationForm";
 
 import BuyCar from "./pages/BuyCar";
 import CarDetailsById from "./pages/CarDetailsById";
+import Admin from "./pages/adminpages/Admin";
+import AdminMiddleware from "./middleware/AdminMiddleware";
+import { onlyAdmin } from "./components/config/Roles";
+import AdminDealerInfo from "./pages/adminpages/AdminDealerInfo";
 
 export default function App() {
   return (
     <Routes>
       <Route path="signin" element={<LoginCard />} />
       <Route path="signup" element={<SimpleRegistrationForm />} />
+      <Route path="/" element={<Home />} />
       <Route element={<AppLayout />}>
-        <Route path="/" element={<Home />} />
-
         <Route path="/carlist" element={<BuyCar />} />
         <Route path="/carlist/cardetails/:carId" element={<CarDetailsById />} />
+        <Route
+          element={
+            <AdminMiddleware allowedRoles={[...Object.values(onlyAdmin)]} />
+          }
+        >
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/dealer/info/:id" element={<AdminDealerInfo/>} />
+        </Route>
       </Route>
     </Routes>
   );
