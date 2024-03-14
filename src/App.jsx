@@ -32,10 +32,12 @@ export default function App() {
             path="/admin/dealer/edit/:userid/:id"
             element={<AdminDealerEdit />}
           />
-         
+        </Route>
+
+        <Route>
+          <Route path="/dealer" />
         </Route>
       </Route>
-  
     </Routes>
   );
 }
