@@ -17,7 +17,7 @@ const FilterCars = ({ setUrlState }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
+  
     setFilterForm({ ...filterForm, [name]: value });
   };
 
@@ -38,15 +38,26 @@ const FilterCars = ({ setUrlState }) => {
 
     if (transmission) url += `&transmission=${transmission}`;
     if (fuelType) url += `&fuel_type=${fuelType}`;
-    console.log(fuelType);
+    
     setUrlState(url);
 
-    // Now you can use the constructed URL for further actions like redirection or API requests
-    console.log("Constructed URL:", url);
+    
+  };
+
+  const resetForm = () => {
+    setValue(200000);
+    setFilterForm({
+      area: "",
+      year: "",
+      brand: "",
+      model: "",
+      fuelType: "",
+      transmission: "",
+    });
   };
   console.log(new Intl.NumberFormat("en-IN").format(value));
   const formattedAmount = new Intl.NumberFormat("en-IN").format(value);
-  console.log(formattedAmount);
+  
   return (
     <Card className="p-4">
       <div className="space-y-4  ">
@@ -153,7 +164,7 @@ const FilterCars = ({ setUrlState }) => {
           </div>
           <div className="flex gap-5 mt-5">
             <Button type="submit">Search</Button>
-            <Button>Reset</Button>
+            <Button onClick={resetForm}>Reset</Button>
           </div>
         </form>
       </div>

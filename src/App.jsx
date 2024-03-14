@@ -11,7 +11,6 @@ import AdminMiddleware from "./middleware/AdminMiddleware";
 import { onlyAdmin } from "./components/config/Roles";
 import AdminDealerInfo from "./pages/adminpages/AdminDealerInfo";
 import AdminDealerEdit from "./pages/adminpages/AdminDealerEdit";
-import InfiniteScrollComponent from "./components/InfiniteScrollComponent";
 
 export default function App() {
   return (
@@ -36,7 +35,7 @@ export default function App() {
          
         </Route>
       </Route>
-      <Route path="/infinte" element={<InfiniteScrollComponent/>} />
+  
     </Routes>
   );
 }

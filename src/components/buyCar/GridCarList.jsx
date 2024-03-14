@@ -1,34 +1,26 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable react/prop-types */
+
 
 import { CardDefault } from "../../ui/CardDefault";
 import CardUi from "../../ui/CardUi";
 import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-const GridCarList = ({ data }) => {
-  // console.log(data);
+const GridCarList = ({ data,error }) => {
+   
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(0);
   const [lastPage, setLastPage] = useState();
-  console.log(page);
-  useEffect(() => {
-    const fetchApiPosts = async () => {
-      try {
-        const res = await fetch(
-          `https://carresell-production.up.railway.app/cars/mainFilter/${page}`
-        );
-        const data = await res.json();
-        console.log(data);
-        setPosts(data?.list);
-      } catch (error) {
-        console.error("Error fetching posts:", error);
-      }
-    };
 
-    fetchApiPosts();
-  }, []);
+  useEffect(() => {
+    if (data) {
+      setPosts(data?.list);
+    }
+    if (error) {
+      alert('data not found');
+    }
+  }, [data, error]);
 
   const fetchData = async () => {
     try {
@@ -48,7 +40,7 @@ const GridCarList = ({ data }) => {
       console.error("Error fetching posts:", error);
     }
   };
-  console.log(posts);
+
   return (
     <>
       <CardUi>
@@ -67,11 +59,13 @@ const GridCarList = ({ data }) => {
           dataLength={posts.length}
           next={fetchData}
           hasMore={true}
-          loader={lastPage ? <p>you are in last page</p> : <p>Loading...</p>}
-          scrollableTarget="scrollableDiv"
+          loader={<p>Loading...</p>}
+        scrollableTarget="scrollableDiv"
+        endMessage={lastPage && <p>You are in the last page</p>}
+
         />
         </div>
-        {lastPage ? <p>you are in last page</p> : <p>Loading...</p>}
+      
       </CardUi>
     </>
   );

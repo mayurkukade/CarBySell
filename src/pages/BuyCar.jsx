@@ -7,18 +7,15 @@ import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 const BuyCar = () => {
   const [urlState, setUrlState] = useState();
-  const { data, error, isLoading } = useFilterCarQuery(1,urlState);
+ 
+  const { data, error, isLoading } = useFilterCarQuery( urlState);
 
   const navigate = useNavigate();
-  console.log(data, error);
-  console.log(isLoading);
-  console.log(urlState);
-  console.log(error);
-
-  if(isLoading){
-    return <p>Loading...</p>
-  }
  
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
 
   if (error?.status == 401) {
     Cookies.remove("token");
@@ -31,7 +28,7 @@ const BuyCar = () => {
           <FilterCars setUrlState={setUrlState} />
         </div>
         <div className="md:col-span-3 max-h-screen overflow-scroll no-scrollbar ">
-          <GridCarList data={data} />
+          <GridCarList data={data} error={error} />
         </div>
       </div>
     </div>
