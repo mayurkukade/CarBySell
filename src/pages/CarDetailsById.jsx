@@ -27,8 +27,38 @@ const CarDetailsById = () => {
     navigate("/signin");
   }
 
-  const { price, brand } = data?.object;
-  console.log(price, brand);
+  const {
+    price,
+    brand,
+    fuelType,
+    kmDriven,
+    ownerSerial,
+    year,
+    model,
+    registration,
+    area,
+    transmission,
+    carInsurance,
+    city,
+    color,
+    bodyType,
+  } = data?.object;
+  console.log(
+    price,
+    brand,
+    fuelType,
+    kmDriven,
+    ownerSerial,
+    year,
+    model,
+    registration,
+    area,
+    city,
+    color,
+    bodyType,
+    transmission,
+    carInsurance
+  );
 
   // if (isError && error?.status === 401) {
   //     console.log('click')
@@ -40,10 +70,31 @@ const CarDetailsById = () => {
   return (
     <div className="grid grid-flow-row-dense md:grid-cols-3 gap-4 container mx-auto">
       <div className="p-4 md:col-span-2 max-h-screen overflow-scroll no-scrollbar ">
-        <CarView />
+        <CarView
+          fuelType={fuelType}
+          registration={registration}
+          ownerSerial={ownerSerial}
+          transmission={transmission}
+          year={year}
+          carInsurance={carInsurance}
+          kmDriven={kmDriven}
+        />
       </div>
       <div className="p-4 sticky top-0">
-        <PriceCard price={price} brand={brand} />
+        <PriceCard
+          price={price}
+          brand={brand}
+          fuelType={fuelType}
+          kmDriven={kmDriven}
+          ownerSerial={ownerSerial}
+          year={year}
+          model={model}
+          registration={registration}
+          area={area}
+          city={city}
+          color={color}
+          bodyType={bodyType}
+        />
       </div>
     </div>
   );
