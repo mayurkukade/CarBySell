@@ -47,7 +47,7 @@ const HeroSection = () => {
       </div>
 
       <div className="absolute  right-0 ">
-        <img alt="car" src={carGroup} className="w-[16rem] md:w-[45rem] " />
+        <img alt="car" src={carGroup} className="w-[16rem] md:w-[50rem] " />
       </div>
     </div>
   );
