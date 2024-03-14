@@ -1,16 +1,17 @@
-import { useState } from "react";
-import Inputs from "../../forms/Inputs";
+// import { useState } from "react";
+// import Inputs from "../../forms/Inputs";
 import carGroup from "/cars/cars.webp";
 import { Button } from "@material-tailwind/react";
-
+import { useNavigate } from "react-router";
 const HeroSection = () => {
-  const [locationState, setLocation] = useState("");
+  // const [locationState, setLocation] = useState("");
 
-  const [carBrandState, setCarBrand] = useState("");
-
+  // const [carBrandState, setCarBrand] = useState("");
+const navigate = useNavigate()
   const submitHandler = (e) => {
     e.target.value;
-    console.log(locationState, carBrandState);
+    navigate('/carlist')
+    // console.log(locationState, carBrandState);
   };
   return (
     <div className="flex justify-between   ">
@@ -25,7 +26,7 @@ const HeroSection = () => {
           Cars Begins Here!
         </p>
         <div className="w-[5rem] space-y-2 md:flex md:space-y-0 md:gap-2   mt-5 ">
-          <Inputs
+          {/* <Inputs
             label="Location"
             placeholder="Search by location"
             name="location"
@@ -40,10 +41,13 @@ const HeroSection = () => {
             onChange={(e) => setCarBrand(e.target.value)}
             value={carBrandState}
             type="text"
-          />
+          /> */}
           
         </div>
-        <Button onClick={submitHandler} className="mt-2">Search</Button>
+        <Button onClick={submitHandler} className="mt-2 flex items-center gap-2 animate-slidein [--slidein-delay:950ms] opacity-0">Get Started <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+</svg>
+</Button>
       </div>
 
       <div className="absolute  right-0 ">

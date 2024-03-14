@@ -8,9 +8,11 @@ import BuyCar from "./pages/BuyCar";
 import CarDetailsById from "./pages/CarDetailsById";
 import Admin from "./pages/adminpages/Admin";
 import AdminMiddleware from "./middleware/AdminMiddleware";
-import { onlyAdmin } from "./components/config/Roles";
+import { onlyAdmin, onlyDealer } from "./components/config/Roles";
 import AdminDealerInfo from "./pages/adminpages/AdminDealerInfo";
 import AdminDealerEdit from "./pages/adminpages/AdminDealerEdit";
+import DealerDashboard from "./pages/dealer/DealerDashboard";
+import DealerMiddleware from "./middleware/DealerMiddleware";
 
 export default function App() {
   return (
@@ -34,8 +36,12 @@ export default function App() {
           />
         </Route>
 
-        <Route>
-          <Route path="/dealer" />
+        <Route
+          element={
+            <DealerMiddleware allowedRoles={[...Object.values(onlyDealer)]} />
+          }
+        >
+          <Route path="/dealer" element={<DealerDashboard />} />
         </Route>
       </Route>
     </Routes>

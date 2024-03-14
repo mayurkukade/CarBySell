@@ -39,6 +39,20 @@ console.log(userRole)
       </Link>
     </>
   ) : null;
+  const dealerDashboard = userRole?.includes("DEALER") ? (
+    <>
+      <Link to={"/dealer"}>
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal"
+        >
+          Dashboard
+        </Typography>
+      </Link>
+    </>
+  ) : null;
 
   React.useEffect(() => {
     window.addEventListener(
@@ -71,6 +85,7 @@ console.log(userRole)
       </Link>
 
       {adminDashboard}
+      {dealerDashboard}
       {/* <Typography
         as="li"
         variant="small"

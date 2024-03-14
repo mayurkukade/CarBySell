@@ -8,15 +8,15 @@ const AdminMiddleware = ({ allowedRoles }) => {
   const location = useLocation();
   const token = Cookies.get("token");
 
-let jwtDecodes
-  if(token){
-  jwtDecodes = jwtDecode(token);
-}
-  
-  const userRole = token ? jwtDecodes.authorities[0] :null;
+  let jwtDecodes;
+  if (token) {
+    jwtDecodes = jwtDecode(token);
+  }
+
+  const userRole = token ? jwtDecodes.authorities[0] : null;
   useEffect(() => {
     if (!allowedRoles.includes(userRole)) {
-     return alert("You must be an admin to access this page.");
+      return alert("You must be an admin to access this page.");
     }
   }, [allowedRoles, userRole]);
   let content = allowedRoles.includes(userRole) ? (

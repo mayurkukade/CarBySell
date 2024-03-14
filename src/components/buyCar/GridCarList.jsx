@@ -12,7 +12,7 @@ const GridCarList = ({ data,error }) => {
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(0);
   const [lastPage, setLastPage] = useState();
-
+console.log(page)
   useEffect(() => {
     if (data) {
       setPosts(data?.list);

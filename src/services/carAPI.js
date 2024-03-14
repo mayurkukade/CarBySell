@@ -20,6 +20,9 @@ export const carApi = apiSlice.injectEndpoints({
       }),
       providesTags: ["CAR"],
     }),
+    dealerByCar:builder.query({
+      url:``
+    })
   }),
 });
 

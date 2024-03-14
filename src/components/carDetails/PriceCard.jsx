@@ -16,20 +16,7 @@ const PriceCard = ({
   color,
   bodyType
 }) => {
-  console.log(
-    price,
-    brand,
-    fuelType,
-    kmDriven,
-    ownerSerial,
-    year,
-    model,
-    registration,
-    city,
-    area,
-    color,
-    bodyType
-  );
+
   return (
     <CardUi>
       <p className="font-bold text-2xl text-black uppercase">
