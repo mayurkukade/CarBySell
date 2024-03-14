@@ -1,9 +1,5 @@
-
 import { apiSlice } from "./apiSlice";
 
-import Cookies from "js-cookie";
-const token = Cookies.get('token')
-console.log(token)
 export const carApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     filterCar: builder.query({
@@ -14,22 +10,17 @@ export const carApi = apiSlice.injectEndpoints({
           method: "GET",
         };
       },
-      providesTags:['CAR']
+      providesTags: ["CAR"],
     }),
     getCarById: builder.query({
-        query: () => ({
-          url: `/car/getCar?car_id=1`,
-        //   headers: {
-        //     "Content-type": "application/json; charset=UTF-8",
-        //     Authorization: `Bearer ${token}`,
-        //   },
-          method: "GET",
-        }),
-        providesTags:['CAR'],
- 
+      query: () => ({
+        url: `/car/getCar?car_id=1`,
+
+        method: "GET",
       }),
-  
+      providesTags: ["CAR"],
+    }),
   }),
 });
 
-export const { useFilterCarQuery,useGetCarByIdQuery } = carApi;
+export const { useFilterCarQuery, useGetCarByIdQuery } = carApi;
