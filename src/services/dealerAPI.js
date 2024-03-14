@@ -26,7 +26,7 @@ export const dealerAPI = apiSlice.injectEndpoints({
     }),
     getEditDealer:builder.mutation({
         query:(userid)=>({
-            url:`/dealer/updateDealer/${userid}`,
+            url:`/dealer/updateDealer/${1107}`,
             method:"PUT",
             body:userid
         }),
