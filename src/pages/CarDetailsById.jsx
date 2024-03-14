@@ -27,8 +27,9 @@ const CarDetailsById = () => {
     navigate("/signin");
     return null
   }
-
-  const { object: { price, brand } = {} } = data || {};
+console.log(data)
+  
+const { object: { price, brand } = {} } = data || {};
  
 
   // if (isError && error?.status === 401) {
@@ -41,7 +42,7 @@ const CarDetailsById = () => {
   return (
     <div className="grid grid-flow-row-dense md:grid-cols-3 gap-4 container mx-auto">
       <div className="p-4 md:col-span-2 max-h-screen overflow-scroll no-scrollbar ">
-        <CarView />
+        <CarView data={data}/>
       </div>
       <div className="p-4 sticky top-0">
         <PriceCard price={price} brand={brand} />

@@ -1,6 +1,5 @@
 import { useState } from "react";
-
-import CardUi from "../../ui/CardUi";
+import { Card } from "@material-tailwind/react";
 import { Button, Slider, Typography } from "@material-tailwind/react";
 // eslint-disable-next-line react/prop-types
 const FilterCars = ({ setUrlState }) => {
@@ -49,10 +48,10 @@ const FilterCars = ({ setUrlState }) => {
   const formattedAmount = new Intl.NumberFormat("en-IN").format(value);
   console.log(formattedAmount);
   return (
-    <CardUi>
-      <div className="space-y-4 ">
+    <Card className="p-4">
+      <div className="space-y-4  ">
         <form onSubmit={submitHandle}>
-          <div className="mb-1 flex flex-col gap-6">
+          <div className="mb-1 flex flex-col gap-6 ">
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Price Range
             </Typography>
@@ -60,9 +59,9 @@ const FilterCars = ({ setUrlState }) => {
               <div style={{ width: "300px" }}></div>
             </div>
             ₹ {formattedAmount}
-            <div className="w-auto">
+            <div className="w-auto flex justify-center">
               <Slider
-                className="overflow-hidden"
+                className="overflow-hidden w-fit"
                 color="blue"
                 defaultValue={200000}
                 step={10000}
@@ -73,7 +72,7 @@ const FilterCars = ({ setUrlState }) => {
             </div>
             <select
               name="area"
-              className="border border-gray-700 h-10 rounded-lg"
+              className="border border-gray-700 h-10 rounded-lg md:w-[50%] lg:w-full "
               value={filterForm.area}
               onChange={handleChange}
             >
@@ -158,7 +157,7 @@ const FilterCars = ({ setUrlState }) => {
           </div>
         </form>
       </div>
-    </CardUi>
+    </Card>
   );
 };
 

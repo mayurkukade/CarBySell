@@ -5,8 +5,8 @@ const AdminDealerEdit = () => {
     const {userid,id} = useParams()
     console.log(userid)
     console.log(id)
-    const [getEditDealer] = useGetAllDealerQuery(userid)
-    
+     const [getEditDealer] = useGetAllDealerQuery(userid)
+  
   return (
     <div className="mx-auto container">
       <p>AdminDealerEdit</p>

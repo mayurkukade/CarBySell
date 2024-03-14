@@ -3,10 +3,10 @@ import { apiSlice } from "./apiSlice";
 export const carApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     filterCar: builder.query({
-      query: (url) => {
+      query: (pageNo,url) => {
         console.log(url);
         return {
-          url: `/cars/mainFilter/0?${url}`,
+          url: `/cars/mainFilter/${pageNo}?${url}`,
           method: "GET",
         };
       },
