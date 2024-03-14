@@ -13,8 +13,8 @@ export const carApi = apiSlice.injectEndpoints({
       providesTags: ["CAR"],
     }),
     getCarById: builder.query({
-      query: () => ({
-        url: `/car/getCar?car_id=1`,
+      query: (carId) => ({
+        url: `/cars/getCar?carId=${carId}`,
 
         method: "GET",
       }),
