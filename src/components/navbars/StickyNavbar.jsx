@@ -71,14 +71,14 @@ console.log(userRole)
       </Link>
 
       {adminDashboard}
-      <Typography
+      {/* <Typography
         as="li"
         variant="small"
         color="blue-gray"
         className="p-1 font-normal"
       >
         Docs
-      </Typography>
+      </Typography> */}
     </ul>
   );
 

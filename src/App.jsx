@@ -27,8 +27,15 @@ export default function App() {
           }
         >
           <Route path="/admin" element={<Admin />} />
-          <Route path="/admin/dealer/info/:id" element={<AdminDealerInfo/>} />
-          <Route path="/admin/dealer/edit/:userid/:id" element={<AdminDealerEdit/>} />
+          <Route path="/admin/dealer/info/:id" element={<AdminDealerInfo />} />
+          <Route
+            path="/admin/dealer/edit/:userid/:id"
+            element={<AdminDealerEdit />}
+          />
+        </Route>
+
+        <Route>
+          <Route path="/dealer" />
         </Route>
       </Route>
     </Routes>
