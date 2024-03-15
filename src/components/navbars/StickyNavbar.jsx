@@ -23,6 +23,8 @@ export function StickyNavbar() {
   
   console.log(jwtDecodes);
   const userRole = token ? jwtDecodes?.authorities :null;
+
+
  
 console.log(userRole)
   const adminDashboard = userRole?.includes("ADMIN") ? (
@@ -41,7 +43,7 @@ console.log(userRole)
   ) : null;
   const dealerDashboard = userRole?.includes("DEALER") ? (
     <>
-      <Link to={"/dealer"}>
+      <Link to={`/dealer/${jwtDecodes?.dealerId}`}>
         <Typography
           as="li"
           variant="small"
@@ -53,6 +55,20 @@ console.log(userRole)
       </Link>
     </>
   ) : null;
+  // const userDashboard = userRole?.includes("USER") ? (
+  //   <>
+  //     <Link to={"/bidding"}>
+  //       <Typography
+  //         as="li"
+  //         variant="small"
+  //         color="blue-gray"
+  //         className="p-1 font-normal"
+  //       >
+  //         Live
+  //       </Typography>
+  //     </Link>
+  //   </>
+  // ) : null;
 
   React.useEffect(() => {
     window.addEventListener(
@@ -83,9 +99,19 @@ console.log(userRole)
           Buy Car
         </Typography>
       </Link>
-
+      <Link to={"/bidding"}>
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal"
+        >
+          Live
+        </Typography>
+      </Link>
       {adminDashboard}
       {dealerDashboard}
+      {/* {userDashboard} */}
       {/* <Typography
         as="li"
         variant="small"

@@ -13,6 +13,8 @@ import AdminDealerInfo from "./pages/adminpages/AdminDealerInfo";
 import AdminDealerEdit from "./pages/adminpages/AdminDealerEdit";
 import DealerDashboard from "./pages/dealer/DealerDashboard";
 import DealerMiddleware from "./middleware/DealerMiddleware";
+import BiddingMainPage from "./pages/bidding/BiddingMainPage";
+import EditDealerCar from "./pages/dealer/EditDealerCar";
 
 export default function App() {
   return (
@@ -41,8 +43,11 @@ export default function App() {
             <DealerMiddleware allowedRoles={[...Object.values(onlyDealer)]} />
           }
         >
-          <Route path="/dealer" element={<DealerDashboard />} />
+          <Route path="/dealer/:id" element={<DealerDashboard />} />
+          <Route path="/dealer/:id/car/edit/:carId" element={<EditDealerCar />} />
         </Route>
+
+        <Route path="/bidding" element={<BiddingMainPage />} />
       </Route>
     </Routes>
   );

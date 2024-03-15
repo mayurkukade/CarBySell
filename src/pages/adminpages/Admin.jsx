@@ -20,13 +20,10 @@ import { Link } from "react-router-dom";
 export default function Admin() {
   const [pageNo, setPageNo] = useState(0);
   console.log(pageNo);
-  const { data, isLoading, isError, error } = useGetAllDealerQuery(pageNo);
-  console.log(data);
+  const { data, isLoading, error } = useGetAllDealerQuery(pageNo);
+
   const [deleteDealer] = useDeleteDealerMutation(2);
-  console.log(data?.list?.length);
-  console.log(isLoading);
-  console.log(isError);
-  console.log(error);
+
 
   const navigate = useNavigate();
   if (error?.status === 401) {
