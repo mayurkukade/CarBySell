@@ -18,6 +18,7 @@ import EditDealerCar from "./pages/dealer/EditDealerCar";
 
 export default function App() {
   return (
+    <>
     <Routes>
       <Route path="signin" element={<LoginCard />} />
       <Route path="signup" element={<SimpleRegistrationForm />} />
@@ -50,5 +51,10 @@ export default function App() {
         <Route path="/bidding" element={<BiddingMainPage />} />
       </Route>
     </Routes>
+    {/* <AboutUs/> */}
+    {/* <CookiePolicy/> */}
+    {/* <PrivacyPolicy/> */}
+    {/* <ContactUs/> */}
+    </>
   );
 }
