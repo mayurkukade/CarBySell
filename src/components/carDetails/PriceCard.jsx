@@ -78,7 +78,7 @@ const PriceCard = ({
         </div>
       </div>
       <div className="my-4 px-6 py-2 bg-orange-700 text-white flex justify-center text-sm items-center rounded-xl uppercase">
-        View Similar
+        Buy Car
       </div>
     </CardUi>
   );

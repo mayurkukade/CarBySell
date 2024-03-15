@@ -10,7 +10,8 @@ const CarDetailsById = () => {
   const navigate = useNavigate();
   const { carId } = useParams();
 
-  const { data, isLoading, isError, error } = useGetCarByIdQuery();
+  const { data, isLoading, isError, error } = useGetCarByIdQuery(carId);
+  console.log(data)
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -25,6 +26,7 @@ const CarDetailsById = () => {
     console.log("navigate");
 
     navigate("/signin");
+    return null
   }
 
   const {
@@ -59,6 +61,7 @@ const CarDetailsById = () => {
     transmission,
     carInsurance
   );
+
 
   // if (isError && error?.status === 401) {
   //     console.log('click')

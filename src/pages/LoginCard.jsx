@@ -46,9 +46,8 @@ export function LoginCard() {
         const jwtDecodesJson = JSON.stringify(jwtDecodes);
         localStorage.setItem("userInfo", jwtDecodesJson);
         console.log(jwtDecodes);
-        dispatch(setToken(data));
-
         navigate("/");
+        dispatch(setToken(data));
       } else {
         alert("email and password is not match");
       }
@@ -94,18 +93,19 @@ export function LoginCard() {
               Sign In
             </Button>
             <div className="flex items-center justify-center mt-4">
-              <Typography variant="small" className=" flex justify-center">
-                Don&apos;t have an account?{" "}
+            <Typography variant="small" className=" flex justify-center">
+              Dont have an account?{" "}
+            </Typography>
+            <Link to="/signup">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="ml-1 font-bold"
+              >
+                Sign up
               </Typography>
-              <Link to="/signup">
-                <Typography
-                  variant="small"
-                  color="blue-gray"
-                  className="ml-1 font-bold"
-                >
-                  Sign up
-                </Typography>
-              </Link>
+              
+            </Link>
             </div>
           </CardFooter>
         </form>

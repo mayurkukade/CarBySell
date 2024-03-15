@@ -15,13 +15,13 @@ const HeroSection = () => {
   return (
     <div className="flex justify-between   ">
       <div className="md:p-12 p-4 h-auto bg-blue-100 w-full">
-        <p className="font-latto text-xs md:mt-8 md:text-lg">
+        <p className="font-latto text-xs md:mt-8 md:text-lg opacity-0 animate-slidein [--slidein-delay:300ms]">
           Welcomes to CarBySell
         </p>
-        <p className="text-md md:text-4xl font-Merriweather ">
+        <p className="text-md md:mb-3 md:text-4xl font-Merriweather animate-slidein [--slidein-delay:600ms] opacity-0 ">
           Your Journey to Exceptional
         </p>
-        <p className="text-md md:text-4xl font-Merriweather ">
+        <p className="text-md md:text-4xl font-Merriweather animate-slidein [--slidein-delay:900ms] opacity-0 ">
           Cars Begins Here!
         </p>
         <div className="w-[5rem] space-y-2 md:flex md:space-y-0 md:gap-2   mt-5 ">
@@ -47,7 +47,7 @@ const HeroSection = () => {
       </div>
 
       <div className="absolute  right-0 ">
-        <img alt="car" src={carGroup} className="w-[16rem] md:w-[45rem] " />
+        <img alt="car" src={carGroup} className="w-[16rem] md:w-[50rem] " />
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unsafe-optional-chaining */
+import CarView1 from "./CarView1";
 import KnowYourCar from "./KnowYourCar";
 
 const CarView = ({
@@ -22,6 +23,7 @@ const CarView = ({
   );
   return (
     <div>
+    <CarView1/>
       <KnowYourCar
         fuelType={fuelType}
         registration={registration}

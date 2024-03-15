@@ -1,78 +1,84 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import {
   Navbar,
   Typography,
   Button,
   IconButton,
   Collapse,
-
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
-import { selectToken } from "../../features/authSlice";
+
 import Cookies from "js-cookie";
 import Profile from "../Profile/Profile";
-import { useSelector } from "react-redux";
+import { jwtDecode } from "jwt-decode";
 
 export function StickyNavbar() {
   const [openNav, setOpenNav] = useState(false);
 
+  const token = Cookies.get("token");
+  let jwtDecodes
+  if(token){
+     jwtDecodes = jwtDecode(token);
+  }
+  
+  console.log(jwtDecodes);
+  const userRole = token ? jwtDecodes?.authorities :null;
+ 
+console.log(userRole)
+  const adminDashboard = userRole?.includes("ADMIN") ? (
+    <>
+      <Link to={"/admin"}>
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal"
+        >
+          Dashboard
+        </Typography>
+      </Link>
+    </>
+  ) : null;
 
-  const token = useSelector(selectToken)
-  console.log(token)
- 
- 
   React.useEffect(() => {
     window.addEventListener(
       "resize",
       () => window.innerWidth >= 960 && setOpenNav(false)
     );
   }, []);
-  
 
   const navList = (
     <ul className="mt-2 mb-4 flex flex-col gap-2 p-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-       
+      <Link to={"/"}>
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal"
+        >
           Home
-        
-      </Typography>
-      <Link to={'/carlist'}>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        
-          Buy Car
-       
-      </Typography>
+        </Typography>
       </Link>
-      <Typography
+      <Link to={"/carlist"}>
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal"
+        >
+          Buy Car
+        </Typography>
+      </Link>
+
+      {adminDashboard}
+      {/* <Typography
         as="li"
         variant="small"
         color="blue-gray"
         className="p-1 font-normal"
       >
-        
-          Blocks
-     
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-       
-          Docs
-   
-      </Typography>
+        Docs
+      </Typography> */}
     </ul>
   );
 
@@ -80,41 +86,37 @@ export function StickyNavbar() {
     <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4">
       <div className="flex items-center justify-between text-blue-gray-900">
         <Link to={"/"}>
-          <Typography
-           
-            className="mr-4 cursor-pointer py-1.5 font-medium"
-          >
+          <Typography className="mr-4 cursor-pointer py-1.5 font-medium">
             CarBySell
           </Typography>
         </Link>
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden lg:block">{navList}</div>
           <div className="flex items-center gap-x-1">
-          {
-            Cookies.get('token')? <Profile /> :
-            <>
-            <Link to="/signin">
-              <Button
-                variant="text"
-                size="sm"
-                className="hidden lg:inline-block"
-              >
-                <span>Sign In</span>
-              </Button>
-            </Link>
-            <Link to="/signup">
-              <Button
-                variant="gradient"
-                size="sm"
-                className="hidden lg:inline-block"
-              >
-                <span>Sign Up</span>
-              </Button>
-            </Link>
-            </>
-          }
-          
-           
+            {token ? (
+              <Profile />
+            ) : (
+              <>
+                <Link to="/signin">
+                  <Button
+                    variant="text"
+                    size="sm"
+                    className="hidden lg:inline-block"
+                  >
+                    <span>Sign In</span>
+                  </Button>
+                </Link>
+                <Link to="/signup">
+                  <Button
+                    variant="gradient"
+                    size="sm"
+                    className="hidden lg:inline-block"
+                  >
+                    <span>Sign Up</span>
+                  </Button>
+                </Link>
+              </>
+            )}
           </div>
           <IconButton
             variant="text"

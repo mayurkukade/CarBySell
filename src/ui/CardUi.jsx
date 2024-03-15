@@ -5,7 +5,7 @@ import {
 // eslint-disable-next-line react/prop-types
 const CardUi = ({children}) => {
   return (
-    <Card className="p-5 ">
+    <Card className="p-5 w-fit ">
       {children}
     </Card>
   )
