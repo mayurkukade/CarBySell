@@ -13,8 +13,10 @@ const HeroSection = () => {
     console.log(locationState, carBrandState);
   };
   return (
-    <div className="flex justify-between   ">
-      <div className="md:p-12 p-4 h-auto bg-blue-100 w-full">
+    
+
+    <div className="flex justify-between h-auto ">
+      <div className="md:p-12 p-4 h-auto  bg-blue-100 w-full">
         <p className="font-latto text-xs md:mt-8 md:text-lg">
           Welcomes to CarBySell
         </p>
@@ -24,7 +26,7 @@ const HeroSection = () => {
         <p className="text-md md:text-4xl font-Merriweather ">
           Cars Begins Here!
         </p>
-        <div className="w-[5rem] space-y-2 md:flex md:space-y-0 md:gap-2   mt-5 ">
+        <div className="w-[5rem] space-y-2 md:flex md:space-y-0 md:gap-2 mt-5 ">
           <Inputs
             label="Location"
             placeholder="Search by location"

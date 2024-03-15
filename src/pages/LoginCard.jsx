@@ -95,7 +95,7 @@ export function LoginCard() {
             </Button>
             <div className="flex items-center justify-center mt-4">
             <Typography variant="small" className=" flex justify-center">
-              Don't have an account?{" "}
+              Dont have an account?{" "}
             </Typography>
             <Link to="/signup">
               <Typography
