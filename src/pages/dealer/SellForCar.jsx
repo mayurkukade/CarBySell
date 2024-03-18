@@ -11,7 +11,7 @@ import {
   CardFooter,
 } from "@material-tailwind/react";
 import { Link, useParams } from "react-router-dom";
-import AddDealerCar from "../../components/dealer/AddDealerCar";
+//import AddDealerCar from "../../components/dealer/AddDealerCar";
 const SellForCar = () => {
   const [pageNo, setPageNo] = useState(0);
   console.log(pageNo);
@@ -166,7 +166,9 @@ return <p>Car not foud</p>
               </Typography>
             </div>
             <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
-              <AddDealerCar />
+              <Link to={`/dealer/${id}/addcar`}>
+                <Button>Add Car</Button>
+              </Link>
             </div>
           </div>
         </CardHeader>
