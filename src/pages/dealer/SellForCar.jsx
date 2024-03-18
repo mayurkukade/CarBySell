@@ -1,5 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import { useDealerIdByCarQuery } from "../../services/carAPI"
 import { Tooltip } from "@material-tailwind/react";
+import { useState } from "react";
+import TableComponent from "../../components/table/TableComponent";
 import {
   Card,
   CardHeader,
@@ -8,32 +10,20 @@ import {
   CardBody,
   CardFooter,
 } from "@material-tailwind/react";
-import {
-  useDeleteDealerMutation,
-  useGetAllDealerQuery,
-} from "../../services/dealerAPI";
-import TableComponent from "../../components/table/TableComponent";
-import { useState } from "react";
-import { AddDealerForm } from "../../components/admin/AddDealerForm";
-import { Link } from "react-router-dom";
-
-export default function Admin() {
+import { Link, useParams } from "react-router-dom";
+import AddDealerCar from "../../components/dealer/AddDealerCar";
+const SellForCar = () => {
   const [pageNo, setPageNo] = useState(0);
   console.log(pageNo);
-  const { data, isLoading, error } = useGetAllDealerQuery(pageNo);
-
-  const [deleteDealer] = useDeleteDealerMutation(2);
-
-
-  const navigate = useNavigate();
-  if (error?.status === 401) {
-    return navigate("/signin");
+  const {id} = useParams()
+ console.log(pageNo)
+  const {data,isLoading,error} = useDealerIdByCarQuery({id,pageNo})
+  console.log(data)
+  if(isLoading){
+    return <p>Loading...</p>
   }
-  console.log(pageNo);
-  const deleteDealerHandler = async (id) => {
-    const res = await deleteDealer(id);
-    console.log(res);
-  };
+  console.log(error)
+
   const nextHandler = () => {
     setPageNo((prevPageNo) => {
       // Check if the error status is 404
@@ -49,33 +39,32 @@ export default function Admin() {
       }
     });
   };
-
   const columns = [
     {
       Header: "ID",
-      accessor: "dealer_id",
+      accessor: "carId",
     },
     {
-      Header: "First Name",
-      accessor: "firstName",
-    },
-
-    {
-      Header: "Last Name ",
-      accessor: "lastName",
-    },
-    {
-      Header: "Location",
-      accessor: "area",
-    },
-    {
-      Header: "Phone",
-      accessor: "mobileNo",
+      Header: "Brand",
+      accessor: "brand",
     },
 
     {
-      Header: "user id",
-      accessor: "userId",
+      Header: "Model ",
+      accessor: "model",
+    },
+    {
+      Header: "Fuel Type",
+      accessor: "fuelType",
+    },
+    {
+      Header: "Year",
+      accessor: "year",
+    },
+
+    {
+      Header: "Price",
+      accessor: "price",
       disableSortBy: true,
     },
 
@@ -83,11 +72,11 @@ export default function Admin() {
       Header: "Edit",
       accessor: "Edit",
       Cell: (cell) => {
-        console.log(cell.row.values.dealer_id);
+        console.log(cell.row.values.carId);
         return (
           <div>
             <div className="flex gap-2 justify-center items-center  ">
-              <Link to={`/admin/dealer/info/${cell.row.values.dealer_id}`}>
+              <Link to={`/carlist/cardetails/${cell.row.values.carId}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -105,8 +94,7 @@ export default function Admin() {
                 </svg>
               </Link>
 
-              <Link
-                to={`/admin/dealer/edit/${cell.row.values.userId}/${cell.row.values.dealer_id}`}
+              <Link to={`/dealer/${id}/car/edit/${cell.row.values.carId}`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -125,7 +113,7 @@ export default function Admin() {
                 </svg>
               </Link>
               <div
-                onClick={() => deleteDealerHandler(cell.row.values.dealer_id)}
+                // onClick={() => deleteDealerHandler(cell.row.values.dealer_id)}
               >
                 <Tooltip content="Delete">
                   <svg
@@ -152,28 +140,33 @@ export default function Admin() {
     },
   ];
 
+ 
+
   let dealerApiData;
   if (isLoading) {
     return <p>isLoading</p>;
+  }else if(error){
+return <p>Car not foud</p>
   } else {
     dealerApiData = data?.list;
   }
   console.log(dealerApiData);
   return (
-    <>
+    <div>
+      <p>Sell for car</p>
       <Card className="h-full w-full">
         <CardHeader floated={false} shadow={false} className="rounded-none">
           <div className=" flex items-center justify-between gap-8">
             <div>
               <Typography variant="h5" color="blue-gray">
-                Dealer list
+                Cars list
               </Typography>
               <Typography color="gray" className="mt-1 font-normal">
-                See information about all members
+                See information about all cars
               </Typography>
             </div>
             <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
-              <AddDealerForm />
+              <AddDealerCar />
             </div>
           </div>
         </CardHeader>
@@ -208,6 +201,9 @@ export default function Admin() {
           </div>
         </CardFooter>
       </Card>
-    </>
-  );
+    </div>
+  )
 }
+
+export default SellForCar
+

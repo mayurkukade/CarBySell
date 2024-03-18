@@ -26,6 +26,7 @@ const TopFeatures = () => {
                     />
                   ))}
                 </div>
+                
               )}
             >
               <img
@@ -87,4 +88,4 @@ const TopFeatures = () => {
   );
 };
 
-export default TopFeatures;
+export default TopFeatures

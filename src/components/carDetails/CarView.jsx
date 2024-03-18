@@ -35,8 +35,8 @@ const CarView = ({
         carInsurance={carInsurance}
         kmDriven={kmDriven}
       />
-      <InspectionReport />
-      <TopFeatures />
+      <InspectionReport/>
+      <TopFeatures/>
     </div>
   );
 };

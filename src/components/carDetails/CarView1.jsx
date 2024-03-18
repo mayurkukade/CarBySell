@@ -62,7 +62,6 @@ const CarView1 = () => {
               className="d-block w-full"
               src={imageUrl}
               alt={`Image ${index + 1}`}
-              
             />
           </div>
         ))}
@@ -78,7 +77,7 @@ const CarView1 = () => {
           <div className="max-w-md mx-auto mb-5 ">
             <div className="flex justify-center ">
               <div className="row ">
-                <div className="col-7 w-[40rem]">
+                <div className="col-7 w-[40rem] ">
                   <div className="car">
                     <div id="carDefault" className="w-full">
                       <ThreeSixty
@@ -193,7 +192,7 @@ const CarView1 = () => {
   };
 
   return (
-    <CardUi>
+    // <CardUi>
     <div className="container mx-auto mt-20">
       <div className="flex flex-col justify-between">
         <div className="max-w-lg mx-auto mb-5">
@@ -247,7 +246,7 @@ const CarView1 = () => {
         </div>
       </div>
     </div>
-    </CardUi>
+    // </CardUi>
   );
 };
 

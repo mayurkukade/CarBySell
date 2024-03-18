@@ -26,12 +26,14 @@ export const dealerAPI = apiSlice.injectEndpoints({
     }),
     getEditDealer: builder.mutation({
       query: (userid) => ({
-        url: `/dealer/updateDealer/${1107}`,
+        url: `/dealer/updateDealer/${userid.id}`,
         method: "PUT",
-        body: userid,
+       transerResponse:console.log(userid.id),
+        body: userid.inputField,
       }),
       invalidatesTags: ["Dealer"],
     }),
+    
   }),
 });
 

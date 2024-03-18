@@ -59,7 +59,7 @@ export function AddDealerForm() {
   return (
     <>
       <Button onClick={handleOpen} className="flex gap-2">
-        <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Add member
+        <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Add Dealer
       </Button>
       <Dialog
         size="xs"
