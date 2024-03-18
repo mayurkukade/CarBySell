@@ -45,30 +45,10 @@ const CarDetailsById = () => {
     color,
     bodyType,
   } = data?.object;
-  console.log(
-    price,
-    brand,
-    fuelType,
-    kmDriven,
-    ownerSerial,
-    year,
-    model,
-    registration,
-    area,
-    city,
-    color,
-    bodyType,
-    transmission,
-    carInsurance
-  );
+  
 
 
-  // if (isError && error?.status === 401) {
-  //     console.log('click')
-  //     Cookies.remove('token')
-  //     redirectToSignIn(navigate); // Redirect to sign-in page
-  //     return null; // Stop further rendering
-  // }
+
 
   return (
     <div className="grid grid-flow-row-dense md:grid-cols-3 gap-4 container mx-auto">
