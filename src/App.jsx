@@ -19,6 +19,7 @@ import AddDealerCar from "./pages/dealer/AddDealerCar";
 import EditCar from "./pages/dealer/EditCar";
 import BiddingAddCar from "./pages/bidding/BiddingAddCar";
 import BiddingEditCar from "./pages/bidding/BiddingEditCar";
+import SetTimer from "./pages/bidding/SetTimer";
 
 
 export default function App() {
@@ -57,6 +58,7 @@ export default function App() {
         <Route path="/bidding" element={<BiddingMainPage />} />
         <Route path="/bidding/:id/addcar" element={<BiddingAddCar />} />
         <Route path="/bidding/:id/editcar" element={<BiddingEditCar />} />
+        <Route path="/bidding/:id/:carid/settimer" element={<SetTimer />} />
       </Route>
     </Routes>
   );
