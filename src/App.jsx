@@ -10,6 +10,7 @@ import AboutUs from "./pages/AboutUs";
 import CookiePolicy from "./pages/CookiePolicy";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import ContactUs from "./pages/ContactUs";
+import { FooterF } from "./components/Footer";
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/carlist" element={<BuyCar />} />
         <Route path="/carlist/cardetails/:carId" element={<CarDetailsById />} />
+        <Route path="/footer" element={<FooterF />} />
       </Route>
     </Routes>
     {/* <AboutUs/> */}

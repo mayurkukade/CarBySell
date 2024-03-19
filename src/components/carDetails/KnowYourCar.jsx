@@ -22,7 +22,7 @@ const KnowYourCar = ({
     );
     return (
         <>
-            <p className="font-bold text-2xl md:ml-12 mb-4 mt-4" >Know your Car</p>
+            <p className="font-bold text-2xl md:ml-12 ml-16 mb-4 mt-4" >Know your Car</p>
             <CardUi>
                 <div>
                     <div className="flex justify-between">
