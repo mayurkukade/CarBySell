@@ -77,7 +77,7 @@ const CarView1 = () => {
           <div className="max-w-md mx-auto mb-5 ">
             <div className="flex justify-center ">
               <div className="row ">
-                <div className="col-7 w-[40rem] ">
+                <div className="col-7 md:w-[40rem] ">
                   <div className="car">
                     <div id="carDefault" className="w-full">
                       <ThreeSixty
