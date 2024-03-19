@@ -6,7 +6,7 @@ import forwardarrow from "/logo/forwardarrow.png";
 const TopFeatures = () => {
   return (
     <>
-      <div className="text-2xl text-black font-bold my-6 ml-12">
+      <div className="text-2xl text-black font-bold my-6 ml-12 font-[Merriweather]">
         Top Features
       </div>
       <CardUi>
@@ -26,7 +26,6 @@ const TopFeatures = () => {
                     />
                   ))}
                 </div>
-                
               )}
             >
               <img
@@ -49,32 +48,32 @@ const TopFeatures = () => {
           <div className="w-1/2 flex flex-col">
             <div className="flex">
               <img alt="medal" src={medal} className="w-[1.5rem] ml-3 mr-5" />
-              <div className="font-semibold text-black">
+              <div className="font-semibold text-black font-[latto] text-lg">
                 Steering Mounted Controls
               </div>
             </div>
             <div className="flex mt-5">
               <img alt="medal" src={medal} className="w-[1.5rem] ml-3 mr-5" />
-              <div className="font-semibold text-black">Push Button Start</div>
+              <div className="font-semibold text-black font-[latto] text-lg">Push Button Start</div>
             </div>
             <div className="flex mt-5">
               <img alt="medal" src={medal} className="w-[1.5rem] ml-3 mr-5" />
-              <div className="font-semibold text-black">
+              <div className="font-semibold text-black font-[latto] text-lg">
                 Bluetooth Campatibility
               </div>
             </div>
             <div className="flex mt-5">
               <img alt="medal" src={medal} className="w-[1.5rem] ml-3 mr-5" />
-              <div className="font-semibold text-black">Airbags</div>
+              <div className="font-semibold text-black font-[latto] text-lg">Airbags</div>
             </div>
             <div className="flex mt-5">
               <img alt="medal" src={medal} className="w-[1.5rem] ml-3 mr-5" />
-              <div className="font-semibold text-black">
+              <div className="font-semibold text-black font-[latto] text-lg">
                 ABS - Anti-lock Braking System
               </div>
             </div>
             <div className="flex justify-end items-center mt-12">
-              <div className="flex gap-2 px-20 py-3 items-center bg-[#002441] text-white text-sm rounded-2xl uppercase">
+              <div className="flex gap-2 px-20 py-3 items-center bg-[#002441] text-white text-sm rounded-2xl uppercase font-[latto] ">
                 <div>View Inspection Report</div>
                 <div>
                   <img alt="medal" src={forwardarrow} className="w-[1.2rem]" />
@@ -88,4 +87,4 @@ const TopFeatures = () => {
   );
 };
 
-export default TopFeatures
+export default TopFeatures;

@@ -25,7 +25,7 @@ const CarView = ({
   );
   return (
     <div>
-    <CarView1/>
+      <CarView1 />
       <KnowYourCar
         fuelType={fuelType}
         registration={registration}
