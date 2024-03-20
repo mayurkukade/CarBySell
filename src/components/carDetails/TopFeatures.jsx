@@ -1,7 +1,7 @@
 import CardUi from "../../ui/CardUi";
 import { Carousel } from "@material-tailwind/react";
-import medal from "/logo/medal.png";
-import forwardarrow from "/logo/forwardarrow.png";
+import medal from "/carslogo/medal.png";
+import forwardarrow from "/carslogo/forwardarrow.png";
 
 const TopFeatures = () => {
   return (
