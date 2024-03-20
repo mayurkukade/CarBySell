@@ -20,7 +20,8 @@ export function CardDefault({ data }) {
         </p>
         <Typography variant="h6">₹ {data.price}</Typography>
 
-     <Link to={`/carlist/cardetails/${data.carId}`}>   <Button className="mt-2 mb-4">View Car</Button></Link>
+     <Link to={`/carlist/cardetails/${data.carId}`}>   
+     <Button className="mt-2 mb-4">View Car</Button></Link>
         <hr />
         <p className="text-sm">Free Test Drive Today at {data.area}</p>
       </CardBody>
