@@ -1,6 +1,10 @@
 /* eslint-disable react/prop-types */
 import CardUi from "../../ui/CardUi";
 import { Chip } from "@material-tailwind/react";
+import { IoHome } from "react-icons/io5";
+import { FaLocationDot } from "react-icons/fa6";
+import { FaFileAlt } from "react-icons/fa";
+import { IoLogoWhatsapp } from "react-icons/io";
 
 const PriceCard = ({
   price,
@@ -47,25 +51,25 @@ const PriceCard = ({
         />
       </div>
       <div className="flex align-bottom items-baseline gap-3">
-        {/* <img alt="home" src={home} className="w-[15px] h-[15px]" /> */}
+        <IoHome />
         <div className=" mt-4 text-base font-[lotto]">
           Home Test Drive Available
         </div>
       </div>
       <div className="flex align-bottom items-baseline gap-3">
-        {/* <img alt="home" src={location} className="w-[15px] h-[15px]" /> */}
+        <FaLocationDot />
         <div className=" mt-4 text-base text-blue-900 font-[lotto]">
           Parked at: {area},{city}
         </div>
       </div>
       <div className="flex align-bottom items-baseline gap-3">
-        {/* <img alt="home" src={file} className="w-[15px] h-[15px]" /> */}
+        <FaFileAlt />
         <div className=" mt-4 text-base text-blue-900 font-[lotto]">
           View Inspection Report
         </div>
       </div>
       <div className="flex align-bottom items-baseline gap-3">
-        {/* <img alt="home" src={whatsapp} className="w-[15px] h-[15px]" /> */}
+        <IoLogoWhatsapp />
         <div className=" mt-4 mb-6 text-base text-blue-900 font-[lotto]">
           Get Service History Report
         </div>

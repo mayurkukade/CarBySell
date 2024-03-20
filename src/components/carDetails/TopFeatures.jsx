@@ -1,7 +1,11 @@
 import CardUi from "../../ui/CardUi";
 import { Carousel } from "@material-tailwind/react";
-import medal from "/logo/medal.png";
-import forwardarrow from "/logo/forwardarrow.png";
+import { RiSteering2Fill } from "react-icons/ri";
+import { IoRadioButtonOnSharp } from "react-icons/io5";
+import { FaBluetooth } from "react-icons/fa6";
+import { FaAirbnb } from "react-icons/fa";
+import { TbShieldLockFilled } from "react-icons/tb";
+import { IoIosArrowForward } from "react-icons/io";
 
 const TopFeatures = () => {
   return (
@@ -47,27 +51,31 @@ const TopFeatures = () => {
           </div>
           <div className="w-1/2 flex flex-col">
             <div className="flex">
-              <img alt="medal" src={medal} className="w-[1.5rem] ml-3 mr-5" />
+              <RiSteering2Fill className="w-[1.5rem] h-[1.5rem] ml-3 mr-5" />
               <div className="font-semibold text-black font-[latto] text-lg">
                 Steering Mounted Controls
               </div>
             </div>
             <div className="flex mt-5">
-              <img alt="medal" src={medal} className="w-[1.5rem] ml-3 mr-5" />
-              <div className="font-semibold text-black font-[latto] text-lg">Push Button Start</div>
+              <IoRadioButtonOnSharp className="w-[1.5rem] h-[1.5rem] ml-3 mr-5" />
+              <div className="font-semibold text-black font-[latto] text-lg">
+                Push Button Start
+              </div>
             </div>
             <div className="flex mt-5">
-              <img alt="medal" src={medal} className="w-[1.5rem] ml-3 mr-5" />
+              <FaBluetooth className="w-[1.5rem] h-[1.5rem] ml-3 mr-5" />
               <div className="font-semibold text-black font-[latto] text-lg">
                 Bluetooth Campatibility
               </div>
             </div>
             <div className="flex mt-5">
-              <img alt="medal" src={medal} className="w-[1.5rem] ml-3 mr-5" />
-              <div className="font-semibold text-black font-[latto] text-lg">Airbags</div>
+              <FaAirbnb className="w-[1.5rem] h-[1.5rem] ml-3 mr-5" />
+              <div className="font-semibold text-black font-[latto] text-lg">
+                Airbags
+              </div>
             </div>
             <div className="flex mt-5">
-              <img alt="medal" src={medal} className="w-[1.5rem] ml-3 mr-5" />
+              <TbShieldLockFilled className="w-[1.5rem] h-[1.5rem] ml-3 mr-5" />
               <div className="font-semibold text-black font-[latto] text-lg">
                 ABS - Anti-lock Braking System
               </div>
@@ -76,7 +84,7 @@ const TopFeatures = () => {
               <div className="flex gap-2 px-20 py-3 items-center bg-[#002441] text-white text-sm rounded-2xl uppercase font-[latto] ">
                 <div>View Inspection Report</div>
                 <div>
-                  <img alt="medal" src={forwardarrow} className="w-[1.2rem]" />
+                  <IoIosArrowForward className="w-[1.2rem] h-[1.5rem]" color="white" />
                 </div>
               </div>
             </div>
