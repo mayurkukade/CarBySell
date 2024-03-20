@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import CardUi from "../../ui/CardUi";
-import medal from "/logo/medal.png";
+import medal from "/carslogo/medal.png";
 
 const KnowYourCar = ({
     fuelType,

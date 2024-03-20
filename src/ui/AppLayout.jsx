@@ -8,7 +8,7 @@ import { Navigate } from 'react-router-dom'
 const AppLayout = () => {
   const location = useLocation()
   const token = Cookies.get('token')
-  console.log(token)
+
   
   return (
     <div>
