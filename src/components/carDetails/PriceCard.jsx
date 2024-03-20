@@ -1,5 +1,9 @@
 /* eslint-disable react/prop-types */
+import Cookies from "js-cookie";
 import CardUi from "../../ui/CardUi";
+import { jwtDecode } from "jwt-decode";
+import { Button } from "@material-tailwind/react";
+
 import { Chip } from "@material-tailwind/react";
 
 const PriceCard = ({
@@ -16,6 +20,11 @@ const PriceCard = ({
   color,
   bodyType,
 }) => {
+  const cookie = Cookies.get("token");
+  console.log(cookie);
+  const jwtDecodes = jwtDecode(cookie);
+  console.log(jwtDecodes?.authorities.includes("DEALER"));
+  const userRole = jwtDecodes?.authorities.includes("DEALER");
   return (
     <CardUi>
       <p className="font-extrabold text-2xl text-black uppercase font-[latto]">
@@ -90,9 +99,14 @@ const PriceCard = ({
           </div>
         </div>
       </div>
-      <div className="my-4 px-6 py-2 bg-orange-700 text-white flex justify-center text-sm items-center rounded-xl uppercase font-[latto]">
+      
+      <Button
+        disabled={userRole ? true : false}
+        className="bg-orange-700 mt-2 text-white"
+      >
         Buy Car
-      </div>
+      </Button>
+      
     </CardUi>
   );
 };
