@@ -1,7 +1,7 @@
 // import React from 'react';
-import logoleft from "/logo/logoleft.png";
-import logotop from "/logo/logotop.png";
-import logoright from "/logo/logoright.png";
+import logoleft from "/carslogo/logoleft.png";
+import logotop from "/carslogo/logotop.png";
+import logoright from "/carslogo/logoright.png";
 
 const AboutUs = () => {
   return (

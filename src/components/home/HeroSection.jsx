@@ -50,28 +50,26 @@ const HeroSection = () => {
             type="text"
           /> */}
         </div>
-        <div className="flex justify-center items-center md:justify-start">
-          <Button
-            onClick={submitHandler}
-            className="mt-2 flex items-center gap-2 animate-slidein [--slidein-delay:950ms] opacity-0"
+        <Button
+          onClick={submitHandler}
+          className="mt-2 flex items-center gap-2 animate-slidein [--slidein-delay:950ms] opacity-0"
+        >
+          Get Started{" "}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
           >
-            Get Started{" "}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
-              />
-            </svg>
-          </Button>
-        </div>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
+            />
+          </svg>
+        </Button>
       </div>
 
       <div className="absolute  right-0 ">

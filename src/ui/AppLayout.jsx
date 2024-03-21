@@ -13,7 +13,7 @@ import FooterF from '../components/Footer'
 const AppLayout = () => {
   const location = useLocation()
   const token = Cookies.get('token')
-  console.log(token)
+
   
   return (
     <div>
