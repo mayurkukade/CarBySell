@@ -1,6 +1,14 @@
 import CardUi from "../../ui/CardUi";
-import medal from "/logo/medal.png";
 import forwardarrow from "/logo/forwardarrow.png";
+import { FaCar } from "react-icons/fa";
+import { SlSpeedometer } from "react-icons/sl";
+import { MdFlood } from "react-icons/md";
+import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import { TbAlertOctagonFilled } from "react-icons/tb";
+import { IoMdColorPalette } from "react-icons/io";
+import { GiTyre } from "react-icons/gi";
+import { IoIosArrowForward } from "react-icons/io";
+
 
 const InspectionReport = () => {
   return (
@@ -16,27 +24,27 @@ const InspectionReport = () => {
           </div>
           <div className="flex gap-5 ">
             <div className="flex flex-col items-center text-center">
-              <img alt="medal" src={medal} className="w-[1.5rem] ml-3 mr-5" />
-              <div className="text-sm mt-3 font-semibold text-black font-[latto] font-[latto]">
+              <FaCar className="w-6 h-6" />
+              <div className="text-sm mt-3 font-semibold text-black font-[latto]">
                 Non <br /> Accidental
               </div>
             </div>
             <div className="flex flex-col items-center text-center">
-              <img alt="medal" src={medal} className="w-[1.5rem] ml-3 mr-5" />
+              <SlSpeedometer className="w-6 h-6" />
               <div className="text-sm mt-3 font-semibold text-black font-[latto]">
                 Non <br /> Tempered
               </div>
             </div>
             <div className="flex flex-col items-center text-center">
-              <img alt="medal" src={medal} className="w-[1.5rem] ml-3 mr-5" />
+              <MdFlood className="w-6 h-6" />
               <div className="text-sm mt-3 font-semibold text-black font-[latto]">
-                Non <br /> Accidental
+                Non <br /> Flooded
               </div>
             </div>
             <div className="flex flex-col items-center text-center">
-              <img alt="medal" src={medal} className="w-[1.5rem] ml-3 mr-5" />
+              <IoMdCheckmarkCircleOutline className="w-6 h-6" />
               <div className="text-sm mt-3 font-semibold text-black font-[latto]">
-                Non <br /> Accidental
+                Quality <br /> Checks
               </div>
             </div>
           </div>
@@ -46,12 +54,10 @@ const InspectionReport = () => {
             <CardUi>
               <div className="flex justify-between w-full align-middle items-center">
                 <div className="flex">
-                  <img
-                    alt="medal"
-                    src={medal}
-                    className="w-[1.5rem] ml-3 mr-5"
-                  />
-                  <div className="text-black font-bold font-[latto] text-xl">Imperfections</div>
+                  <TbAlertOctagonFilled className="w-[1.5rem] h-[1.5rem] ml-3 mr-5" />
+                  <div className="text-black font-bold font-[latto] text-xl">
+                    Imperfections
+                  </div>
                 </div>
                 <div>
                   <img
@@ -72,8 +78,10 @@ const InspectionReport = () => {
           <CardUi>
             <div className="flex justify-between w-full align-middle items-center">
               <div className="flex">
-                <img alt="medal" src={medal} className="w-[1.5rem] ml-3 mr-5" />
-                <div className="text-black font-bold font-[latto] text-xl">Repainted Parts</div>
+                <IoMdColorPalette className="w-[1.5rem] h-[1.5rem] ml-3 mr-5" />
+                <div className="text-black font-bold font-[latto] text-xl">
+                  Repainted Parts
+                </div>
               </div>
               <div>
                 <img
@@ -93,8 +101,10 @@ const InspectionReport = () => {
           <CardUi>
             <div className="flex justify-between w-full align-middle items-center">
               <div className="flex">
-                <img alt="medal" src={medal} className="w-[1.5rem] ml-3 mr-5" />
-                <div className="text-black font-bold font-[latto] text-xl">Perfect Parts</div>
+                <IoMdCheckmarkCircleOutline className="w-[1.5rem] h-[1.5rem] ml-3 mr-5" />
+                <div className="text-black font-bold font-[latto] text-xl">
+                  Perfect Parts
+                </div>
               </div>
               <div>
                 <img
@@ -114,7 +124,7 @@ const InspectionReport = () => {
           <CardUi>
             <div className="flex justify-between w-full align-middle items-center">
               <div className="flex">
-                <img alt="medal" src={medal} className="w-[1.5rem] ml-3 mr-5" />
+                <GiTyre className="w-[1.5rem] h-[1.5rem] ml-3 mr-5" />
                 <div className="text-black font-bold font-[latto] text-xl">
                   Tyres (Life Remaining)
                 </div>
@@ -135,10 +145,13 @@ const InspectionReport = () => {
           </CardUi>
         </div>
         <div className="flex justify-end items-center mt-12">
-          <div className="flex gap-2 px-20 py-3 items-center bg-[#002441] text-white text-sm rounded-2xl uppercase">
-            <div className="font-[latto]">View Inspection Report</div>
+          <div className="flex gap-2 px-20 py-3 items-center bg-[#002441] text-white text-sm rounded-2xl uppercase font-[latto] ">
+            <div>View Inspection Report</div>
             <div>
-              <img alt="medal" src={forwardarrow} className="w-[1.2rem]" />
+              <IoIosArrowForward
+                className="w-[1.2rem] h-[1.5rem]"
+                color="white"
+              />
             </div>
           </div>
         </div>
