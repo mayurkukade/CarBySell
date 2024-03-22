@@ -15,15 +15,10 @@ import DealerDashboard from "./pages/dealer/DealerDashboard";
 import DealerMiddleware from "./middleware/DealerMiddleware";
 import BiddingMainPage from "./pages/bidding/BiddingMainPage";
 import EditDealerCar from "./pages/dealer/EditDealerCar";
-import AddDealerCar from "./pages/dealer/AddDealerCar";
-import EditCar from "./pages/dealer/EditCar";
-import BiddingAddCar from "./pages/bidding/BiddingAddCar";
-import BiddingEditCar from "./pages/bidding/BiddingEditCar";
-import SetTimer from "./pages/bidding/SetTimer";
-
 
 export default function App() {
   return (
+    <>
     <Routes>
       <Route path="signin" element={<LoginCard />} />
       <Route path="signup" element={<SimpleRegistrationForm />} />
@@ -51,15 +46,15 @@ export default function App() {
         >
           <Route path="/dealer/:id" element={<DealerDashboard />} />
           <Route path="/dealer/:id/car/edit/:carId" element={<EditDealerCar />} />
-          <Route path="/dealer/:id/addcar" element={<AddDealerCar />} />
-          <Route path="/dealer/:id/editcar" element={<EditCar />} />
         </Route>
 
         <Route path="/bidding" element={<BiddingMainPage />} />
-        <Route path="/bidding/:id/addcar" element={<BiddingAddCar />} />
-        <Route path="/bidding/:id/editcar" element={<BiddingEditCar />} />
-        <Route path="/bidding/:id/:carid/settimer" element={<SetTimer />} />
       </Route>
     </Routes>
+    {/* <AboutUs/> */}
+    {/* <CookiePolicy/> */}
+    {/* <PrivacyPolicy/> */}
+    {/* <ContactUs/> */}
+    </>
   );
 }
