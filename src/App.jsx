@@ -58,7 +58,7 @@ export default function App() {
             <Route path="/dealer/:id" element={<DealerDashboard />} />
             <Route path="/dealer/:id/car/edit/:carId" element={<EditDealerCar />} />
             <Route path="/dealer/:id/addcar" element={<AddDealerCar />} />
-            <Route path="/dealer/:id/editcar" element={<EditCar />} />
+            <Route path="/dealer/5/car/edit/6" element={<EditCar />} />
           </Route>
 
           <Route path="/bidding" element={<BiddingMainPage />} />
