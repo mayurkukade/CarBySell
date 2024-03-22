@@ -30,28 +30,25 @@ import AppLayout2 from "./ui/AppLayout2";
 
 export default function App() {
   return (
-    <>
-      <Routes>
-        <Route path="signin" element={<LoginCard />} />
-        <Route path="signup" element={<SimpleRegistrationForm />} />
-        <Route path="/" element={<Home />} />
-
-        <Route element={<AppLayout />}>
-          <Route path="/carlist" element={<BuyCar />} />
-          <Route path="/carlist/cardetails/:carId" element={<CarDetailsById />} />
-
+    <Routes>
+      <Route path="signin" element={<LoginCard />} />
+      <Route path="signup" element={<SimpleRegistrationForm />} />
+      <Route path="/" element={<Home />} />
+      <Route element={<AppLayout />}>
+        <Route path="/carlist" element={<BuyCar />} />
+        <Route path="/carlist/cardetails/:carId" element={<CarDetailsById />} />
+        <Route
+          element={
+            <AdminMiddleware allowedRoles={[...Object.values(onlyAdmin)]} />
+          }
+        >
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/dealer/info/:id" element={<AdminDealerInfo />} />
           <Route
-            element={
-              <AdminMiddleware allowedRoles={[...Object.values(onlyAdmin)]} />
-            }
-          >
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/admin/dealer/info/:id" element={<AdminDealerInfo />} />
-            <Route
-              path="/admin/dealer/edit/:userid/:id"
-              element={<AdminDealerEdit />}
-            />
-          </Route>
+            path="/admin/dealer/edit/:userid/:id"
+            element={<AdminDealerEdit />}
+          />
+        </Route>
 
           <Route
             element={
