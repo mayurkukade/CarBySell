@@ -15,9 +15,8 @@ import AdminDealerEdit from "./pages/adminpages/AdminDealerEdit";
 import DealerDashboard from "./pages/dealer/DealerDashboard";
 import DealerMiddleware from "./middleware/DealerMiddleware";
 import BiddingMainPage from "./pages/bidding/BiddingMainPage";
-import EditDealerCar from "./pages/dealer/EditDealerCar";
 import AddDealerCar from "./pages/dealer/AddDealerCar";
-import EditCar from "./pages/dealer/EditCar";
+import EditDealerCar from "./pages/dealer/EditDealerCar";
 import BiddingAddCar from "./pages/bidding/BiddingAddCar";
 import BiddingEditCar from "./pages/bidding/BiddingEditCar";
 import SetTimer from "./pages/bidding/SetTimer";
@@ -56,9 +55,8 @@ export default function App() {
             }
           >
             <Route path="/dealer/:id" element={<DealerDashboard />} />
-            <Route path="/dealer/:id/car/edit/:carId" element={<EditDealerCar />} />
             <Route path="/dealer/:id/addcar" element={<AddDealerCar />} />
-            <Route path="/dealer/5/car/edit/6" element={<EditCar />} />
+            <Route path="/dealer/:id/car/edit/:carId" element={<EditDealerCar />} />
           </Route>
 
           <Route path="/bidding" element={<BiddingMainPage />} />
