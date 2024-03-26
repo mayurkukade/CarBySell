@@ -1,5 +1,5 @@
 import CardUi from "../../ui/CardUi";
-import forwardarrow from "/logo/forwardarrow.png";
+import forwardarrow from "/carslogo/forwardarrow.png";
 import { FaCar } from "react-icons/fa";
 import { SlSpeedometer } from "react-icons/sl";
 import { MdFlood } from "react-icons/md";
@@ -8,7 +8,6 @@ import { TbAlertOctagonFilled } from "react-icons/tb";
 import { IoMdColorPalette } from "react-icons/io";
 import { GiTyre } from "react-icons/gi";
 import { IoIosArrowForward } from "react-icons/io";
-
 
 const InspectionReport = () => {
   return (
