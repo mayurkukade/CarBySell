@@ -20,23 +20,38 @@ export const carApi = apiSlice.injectEndpoints({
       }),
       providesTags: ["CAR"],
     }),
-    dealerIdByCar:builder.query({
-      query:({id,pageNo})=>({
-        url:`/car/dealer?dealerId=${id}&carStatus=ACTIVE&pageNo=${pageNo}`,
-        method:"GET",
-        transferResponse:console.log(id,pageNo)
+    dealerIdByCar: builder.query({
+      query: ({ id, pageNo }) => ({
+        url: `/car/dealer?dealerId=${id}&carStatus=ACTIVE&pageNo=${pageNo}`,
+        method: "GET",
+        transferResponse: console.log(id, pageNo),
       }),
-      providesTags: ["CAR","Dealer"],
-     
+      providesTags: ["CAR", "Dealer"],
     }),
-    getAllCar:builder.query({
-      query:()=>({
-        url:`/cars/mainFilter/${0}`,
-        method:"GET"
+    getAllCar: builder.query({
+      query: () => ({
+        url: `/cars/mainFilter/${0}`,
+        method: "GET",
       }),
-      providesTags:["CAR"]
-    })
+      providesTags: ["CAR"],
+    }),
+    bookingRequest: builder.mutation({
+      query: (formData) => ({
+        transferResponse:console.log(formData),
+        url: `/booking/request`,
+      
+        method: "POST",
+        body:formData
+      }),
+      invalidatesTags:["CAR"]
+    }),
   }),
 });
 
-export const { useFilterCarQuery, useGetCarByIdQuery,useGetAllCarQuery,useDealerIdByCarQuery } = carApi;
+export const {
+  useFilterCarQuery,
+  useGetCarByIdQuery,
+  useGetAllCarQuery,
+  useDealerIdByCarQuery,
+  useBookingRequestMutation
+} = carApi;

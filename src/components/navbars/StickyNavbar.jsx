@@ -53,6 +53,16 @@ console.log(userRole)
           Dashboard
         </Typography>
       </Link>
+      <Link to={"/carlist"}>
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal"
+        >
+          Car List
+        </Typography>
+      </Link>
     </>
   ) : null;
   // const userDashboard = userRole?.includes("USER") ? (
@@ -89,7 +99,8 @@ console.log(userRole)
           Home
         </Typography>
       </Link>
-      <Link to={"/carlist"}>
+      {
+        userRole == 'DEALER' ? null :<Link to={"/carlist"}>
         <Typography
           as="li"
           variant="small"
@@ -99,6 +110,8 @@ console.log(userRole)
           Buy Car
         </Typography>
       </Link>
+      }
+      
       <Link to={"/bidding"}>
         <Typography
           as="li"

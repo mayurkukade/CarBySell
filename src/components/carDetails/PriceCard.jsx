@@ -2,13 +2,15 @@
 import Cookies from "js-cookie";
 import CardUi from "../../ui/CardUi";
 import { jwtDecode } from "jwt-decode";
-import { Button } from "@material-tailwind/react";
+import DialogBox from "../../ui/DialogBox";
 
 import { Chip } from "@material-tailwind/react";
 import { IoHome } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaFileAlt } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
+
+
 
 const PriceCard = ({
   price,
@@ -23,9 +25,12 @@ const PriceCard = ({
   area,
   color,
   bodyType,
+  dealer_id,
+  carId
 }) => {
   const cookie = Cookies.get("token");
   console.log(cookie);
+
   const jwtDecodes = jwtDecode(cookie);
   console.log(jwtDecodes?.authorities.includes("DEALER"));
   const userRole = jwtDecodes?.authorities.includes("DEALER");
@@ -104,13 +109,13 @@ const PriceCard = ({
         </div>
       </div>
       
-      <Button
-        disabled={userRole ? true : false}
-        className="bg-orange-700 mt-2 text-white"
-      >
-        Buy Car
-      </Button>
-      
+      {
+        userRole ? 
+       null: 
+       <DialogBox price={price} dealer_id={dealer_id} carId={carId}/>
+      }
+     
+     
     </CardUi>
   );
 };
