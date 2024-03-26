@@ -27,7 +27,7 @@ const FilterCars = ({ setUrlState }) => {
     const minPrice = 3999; // Assuming this is your default minimum price
     const maxPrice = value; // Maximum price from the slider
     let url = ``;
-
+console.log(brand.toUpperCase())
     // Append selected filters to the URL if they are not empty
     if (minPrice) url += `&minPrice=${minPrice}`;
     if (maxPrice > minPrice) url += `&maxPrice=${maxPrice}`;

@@ -1,17 +1,20 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import Inputs from "../../forms/Inputs";
 import { Textarea } from "@material-tailwind/react";
 import React from "react";
-import {useGetCarByIdQuery} from "../../services/carAPI"
-import { useParams } from "react-router-dom";
+import {
+  useCarUpdateMutation,
+  useGetCarByIdQuery,
+} from "../../services/carAPI";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function EditDealerCar() {
- 
-  const {carId} = useParams()
-  const {data : Carid} = useGetCarByIdQuery(carId);
-  console.log("Carid data :- ",Carid);
-  
-
+  const { id, carId } = useParams();
+  const { data: Carid } = useGetCarByIdQuery(carId);
+  console.log("Carid data :- ", Carid);
+  console.log(id, carId);
+  const navigate = useNavigate()
+  const [carUpdate] = useCarUpdateMutation(carId);
   const [formData, setFormData] = useState({
     //features
     acFeature: false,
@@ -39,8 +42,14 @@ export default function EditDealerCar() {
     noOfWheels: "",
     ownerSerial: "",
     tyre: "",
-    dealer_id: "",
+    dealer_id: id,
   });
+  const date = new Date(); // Create a new Date object with the current date
+  const year = date.getFullYear(); // Get the year (e.g., 2024)
+  const month = String(date.getMonth() + 1).padStart(2, "0"); // Get the month (0-indexed, so add 1), pad with leading zero if needed
+  const day = String(date.getDate()).padStart(2, "0"); // Get the day of the month, pad with leading zero if needed
+
+  const formattedDate = `${year}-${month}-${day}`;
 
   useEffect(() => {
     if (Carid) {
@@ -65,11 +74,10 @@ export default function EditDealerCar() {
         ownerSerial: object?.ownerSerial || "",
         tyre: object?.tyre || "",
         dealer_id: object?.dealer_id || "",
-       
       });
     }
-  }, [ Carid]);
-  const handleSubmit = (event) => {
+  }, [Carid]);
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     // Prepare the form data to send to the backend
@@ -120,11 +128,17 @@ export default function EditDealerCar() {
 
       year: formData.year,
 
-      // dealer_id: dealer_id,
+      dealer_id: id,
 
-      date: "2023-07-19",
+      date: formattedDate,
     };
     console.log(data);
+
+    const res = await carUpdate({data,carId});
+    console.log(res);
+    if(res?.data?.status === 'success'){
+      navigate(-1)
+    }
     // console.log(data);
     // addCar(data).then((responseData) => {
     //   console.log(responseData);
@@ -516,23 +530,27 @@ export default function EditDealerCar() {
           {/* tenth part */}
 
           <div className="mt-5">
-          <input
-        type="file"
-        accept="image/*"
-        multiple
-        onChange={handleFileChange}
-      />
+            <input
+              type="file"
+              accept="image/*"
+              multiple
+              onChange={handleFileChange}
+            />
 
-      <div>
-        {mult.map((file, index) => (
-          <img
-            key={index}
-            src={URL.createObjectURL(file)}
-            alt={`Image ${index + 1}`}
-            style={{ maxWidth: '500px', maxHeight: '500px', margin: '5px' }}
-          />
-        ))}
-      </div>
+            <div>
+              {mult.map((file, index) => (
+                <img
+                  key={index}
+                  src={URL.createObjectURL(file)}
+                  alt={`Image ${index + 1}`}
+                  style={{
+                    maxWidth: "500px",
+                    maxHeight: "500px",
+                    margin: "5px",
+                  }}
+                />
+              ))}
+            </div>
           </div>
 
           {/* eleventh part */}

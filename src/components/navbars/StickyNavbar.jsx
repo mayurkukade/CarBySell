@@ -53,22 +53,32 @@ console.log(userRole)
           Dashboard
         </Typography>
       </Link>
+      <Link to={"/carlist"}>
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal"
+        >
+          Car List
+        </Typography>
+      </Link>
     </>
   ) : null;
-  // const userDashboard = userRole?.includes("USER") ? (
-  //   <>
-  //     <Link to={"/bidding"}>
-  //       <Typography
-  //         as="li"
-  //         variant="small"
-  //         color="blue-gray"
-  //         className="p-1 font-normal"
-  //       >
-  //         Live
-  //       </Typography>
-  //     </Link>
-  //   </>
-  // ) : null;
+   const userDashboard = userRole?.includes("USER") ? (
+    <>
+      <Link to={"/bidding"}>
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal"
+        >
+          My All Request
+        </Typography>
+      </Link>
+    </>
+   ) : null;
 
   React.useEffect(() => {
     window.addEventListener(
@@ -89,7 +99,8 @@ console.log(userRole)
           Home
         </Typography>
       </Link>
-      <Link to={"/carlist"}>
+      {
+        userRole == 'DEALER' ? null :<Link to={"/carlist"}>
         <Typography
           as="li"
           variant="small"
@@ -99,6 +110,8 @@ console.log(userRole)
           Buy Car
         </Typography>
       </Link>
+      }
+      
       <Link to={"/bidding"}>
         <Typography
           as="li"
@@ -111,7 +124,7 @@ console.log(userRole)
       </Link>
       {adminDashboard}
       {dealerDashboard}
-      {/* {userDashboard} */}
+      {userDashboard}
       {/* <Typography
         as="li"
         variant="small"
