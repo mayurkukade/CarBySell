@@ -1,4 +1,4 @@
-import { useDealerIdByCarQuery } from "../../services/carAPI"
+import { useDealerIdByCarQuery } from "../../services/carAPI";
 import { Tooltip } from "@material-tailwind/react";
 import { useState } from "react";
 import TableComponent from "../../components/table/TableComponent";
@@ -11,19 +11,25 @@ import {
   CardFooter,
 } from "@material-tailwind/react";
 import { Link, useParams } from "react-router-dom";
+import { useCarRemoveMutation } from "../../services/carAPI";
 //import AddDealerCar from "../../components/dealer/AddDealerCar";
 const SellForCar = () => {
   const [pageNo, setPageNo] = useState(0);
+  const [carRemove] = useCarRemoveMutation()
   console.log(pageNo);
-  const {id} = useParams()
- console.log(pageNo)
-  const {data,isLoading,error} = useDealerIdByCarQuery({id,pageNo})
-  console.log(data)
-  if(isLoading){
-    return <p>Loading...</p>
+  const { id } = useParams();
+  console.log(pageNo);
+  const { data, isLoading, error } = useDealerIdByCarQuery({ id, pageNo });
+  console.log(data);
+  if (isLoading) {
+    return <p>Loading...</p>;
   }
-  console.log(error)
-
+  console.log(error);
+const deleteDealerHandler=async(carId)=>{
+console.log(carId)
+const res = await carRemove(carId)
+console.log(res)
+}
   const nextHandler = () => {
     setPageNo((prevPageNo) => {
       // Check if the error status is 404
@@ -94,8 +100,7 @@ const SellForCar = () => {
                 </svg>
               </Link>
 
-              <Link to={`/dealer/${id}/car/edit/${cell.row.values.carId}`}
-              >
+              <Link to={`/dealer/${id}/car/edit/${cell.row.values.carId}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -113,7 +118,7 @@ const SellForCar = () => {
                 </svg>
               </Link>
               <div
-                // onClick={() => deleteDealerHandler(cell.row.values.dealer_id)}
+               onClick={() => deleteDealerHandler(cell.row.values.carId)}
               >
                 <Tooltip content="Delete">
                   <svg
@@ -140,13 +145,9 @@ const SellForCar = () => {
     },
   ];
 
- 
-
   let dealerApiData;
   if (isLoading) {
     return <p>isLoading</p>;
-  }else if(error){
-return <p>Car not foud</p>
   } else {
     dealerApiData = data?.list;
   }
@@ -172,9 +173,14 @@ return <p>Car not foud</p>
             </div>
           </div>
         </CardHeader>
-        <CardBody className="overflow-scroll px-0">
-          <TableComponent columns={columns} data={dealerApiData} />
-        </CardBody>
+        {error ? (
+          <p className="text-center">car is not found</p>
+        ) : (
+          <CardBody className="overflow-scroll px-0">
+            <TableComponent columns={columns} data={dealerApiData} />
+          </CardBody>
+        )}
+
         <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
           <Typography
             variant="medium"
@@ -204,8 +210,7 @@ return <p>Car not foud</p>
         </CardFooter>
       </Card>
     </div>
-  )
-}
+  );
+};
 
-export default SellForCar
-
+export default SellForCar;

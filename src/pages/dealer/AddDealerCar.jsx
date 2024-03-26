@@ -2,8 +2,11 @@ import { useState } from "react";
 import Inputs from "../../forms/Inputs";
 import { Textarea } from "@material-tailwind/react";
 import React from "react";
+import { useCarRegisterMutation } from "../../services/carAPI";
+import { useNavigate, useParams } from "react-router";
 
 export default function AddDealerCar() {
+  const [carRegister] = useCarRegisterMutation()
   const [formData, setFormData] = useState({
     //features
     acFeature: false,
@@ -33,10 +36,17 @@ export default function AddDealerCar() {
     tyre: "",
     dealer_id: "",
   });
-
+const {id} = useParams()
+console.log(id)
+ const navigate = useNavigate()
+const date = new Date(); // Create a new Date object with the current date
+  const year = date.getFullYear(); // Get the year (e.g., 2024)
+  const month = String(date.getMonth() + 1).padStart(2, "0"); // Get the month (0-indexed, so add 1), pad with leading zero if needed
+  const day = String(date.getDate()).padStart(2, "0"); // Get the day of the month, pad with leading zero if needed
  
-
-  const handleSubmit = (event) => {
+  const formattedDate = `${year}-${month}-${day}`;
+  console.log(formattedDate)
+  const handleSubmit = async(event) => {
     event.preventDefault();
 
     // Prepare the form data to send to the backend
@@ -87,17 +97,18 @@ export default function AddDealerCar() {
 
       year: formData.year,
 
-      // dealer_id: dealer_id,
+       dealer_id: id,
 
-      date: "2023-07-19",
+      date: formattedDate,
     };
-    console.log(data);
-    // console.log(data);
-    // addCar(data).then((responseData) => {
-    //   console.log(responseData);
-    //   if (responseData?.error) return;
-    //  // navigate("/dealer");
-    // });
+   
+    const res = await carRegister(data)
+   
+    if(res?.data?.status === 'success'){
+      alert('car added')
+      navigate(-1)
+    }
+  
   };
 
   const [mult, setMult] = React.useState([]);

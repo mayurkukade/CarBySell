@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 const GridCarList = ({ data,error }) => {
-   
+   console.log(data)
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(0);
   const [lastPage, setLastPage] = useState();
@@ -21,12 +21,13 @@ console.log(page)
       alert('data not found');
     }
   }, [data, error]);
-
+console.log(page)
   const fetchData = async () => {
     try {
       const nextPage = page + 1; // Increment page here
+      console.log(nextPage)
       const res = await fetch(
-        `https://carresell-production.up.railway.app/cars/mainFilter/${nextPage}`
+        `https://carresel-production.up.railway.app/cars/mainFilter/${nextPage}`
       );
       const data = await res.json();
       console.log(data);

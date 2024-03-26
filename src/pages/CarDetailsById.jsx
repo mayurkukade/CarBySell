@@ -44,8 +44,10 @@ const CarDetailsById = () => {
     city,
     color,
     bodyType,
+    dealer_id,
+
   } = data?.object;
-  
+ 
 
 
 
@@ -77,6 +79,8 @@ const CarDetailsById = () => {
           city={city}
           color={color}
           bodyType={bodyType}
+          dealer_id = {dealer_id}
+          carId = {carId}
         />
       </div>
     </div>
