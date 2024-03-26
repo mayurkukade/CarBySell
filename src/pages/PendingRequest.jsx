@@ -1,20 +1,29 @@
-import { useUserAllCarRequestQuery } from "../services/carAPI"
-
+import UserCardPendingRequest from "../components/userRequest/UserCardPendingRequest";
+import { useUserAllCarRequestQuery } from "../services/carAPI";
 
 const PendingRequest = () => {
-    const {data,isLoading,error} = useUserAllCarRequestQuery()
-    console.log(data)
-    if(isLoading){
-        return <p>isLoading</p>
-    }
-if(error){
-    console.log(error)
-}
+  const { data, isLoading, error } = useUserAllCarRequestQuery();
+  console.log(data?.list);
+  const renderData = data?.list.map((item, index) => {
+    console.log(item)
+    return (
+      <div key={index} className="mt-5">
+        <UserCardPendingRequest item = {item} />
+      </div>
+    );
+  });
+  if (isLoading) {
+    return <p>isLoading</p>;
+  }
+  if (error) {
+    console.log(error);
+  }
   return (
     <>
-      <p>Pending request</p>
-    </>
-  )
-}
 
-export default PendingRequest
+      {renderData}
+    </>
+  );
+};
+
+export default PendingRequest;
