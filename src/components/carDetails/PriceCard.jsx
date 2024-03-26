@@ -10,8 +10,6 @@ import { FaLocationDot } from "react-icons/fa6";
 import { FaFileAlt } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
 
-
-
 const PriceCard = ({
   price,
   brand,
@@ -26,14 +24,16 @@ const PriceCard = ({
   color,
   bodyType,
   dealer_id,
-  carId
+  carId,
 }) => {
   const cookie = Cookies.get("token");
-  console.log(cookie);
 
-  const jwtDecodes = jwtDecode(cookie);
-  console.log(jwtDecodes?.authorities.includes("DEALER"));
-  const userRole = jwtDecodes?.authorities.includes("DEALER");
+  console.log(cookie);
+  const jwtDecodes = cookie ? jwtDecode(cookie) : null;
+
+  const userRole = jwtDecodes?.authorities[0];
+  console.log(userRole);
+  console.log(userRole);
   return (
     <CardUi>
       <p className="font-extrabold text-2xl text-black uppercase font-[latto]">
@@ -108,14 +108,10 @@ const PriceCard = ({
           </div>
         </div>
       </div>
-      
-      {
-        userRole ? 
-       null: 
-       <DialogBox price={price} dealer_id={dealer_id} carId={carId}/>
-      }
-     
-     
+
+      {userRole == "DEALER" ? null : (
+        <DialogBox price={price} dealer_id={dealer_id} carId={carId} />
+      )}
     </CardUi>
   );
 };

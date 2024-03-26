@@ -37,14 +37,47 @@ export const carApi = apiSlice.injectEndpoints({
     }),
     bookingRequest: builder.mutation({
       query: (formData) => ({
-        transferResponse:console.log(formData),
+        transferResponse: console.log(formData),
         url: `/booking/request`,
-      
+
         method: "POST",
-        body:formData
+        body: formData,
+      }),
+      invalidatesTags: ["CAR"],
+    }),
+    carRegister: builder.mutation({
+      query: (data) => ({
+        url: `/car/carregister`,
+
+        transferResponse: console.log(data),
+        body: data,
+        method: "POST",
+      }),
+      invalidatesTags: ["CAR"],
+    }),
+    carUpdate: builder.mutation({
+      query: ({ data, carId }) => ({
+        url: `/car/edit/${carId}`,
+        transferResponse: console.log(data, carId),
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: ["CAR"],
+    }),
+    carRemove: builder.mutation({
+      query: (carId) => ({
+        url: `/car/removeCar?carId=${carId}`,
+        transferResponse:console.log(carId),
+        method:'DELETE'
       }),
       invalidatesTags:["CAR"]
     }),
+    userAllCarRequest:builder.query({
+      query:()=>({
+        url:`/booking/getByUserId?pageNo=0&userId=1012`
+      }),
+      providesTags:["CAR"]
+    })
   }),
 });
 
@@ -53,5 +86,9 @@ export const {
   useGetCarByIdQuery,
   useGetAllCarQuery,
   useDealerIdByCarQuery,
-  useBookingRequestMutation
+  useBookingRequestMutation,
+  useCarRegisterMutation,
+  useCarUpdateMutation,
+  useCarRemoveMutation,
+  useUserAllCarRequestQuery
 } = carApi;

@@ -65,20 +65,20 @@ console.log(userRole)
       </Link>
     </>
   ) : null;
-  // const userDashboard = userRole?.includes("USER") ? (
-  //   <>
-  //     <Link to={"/bidding"}>
-  //       <Typography
-  //         as="li"
-  //         variant="small"
-  //         color="blue-gray"
-  //         className="p-1 font-normal"
-  //       >
-  //         Live
-  //       </Typography>
-  //     </Link>
-  //   </>
-  // ) : null;
+   const userDashboard = userRole?.includes("USER") ? (
+    <>
+      <Link to={"/bidding"}>
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal"
+        >
+          My All Request
+        </Typography>
+      </Link>
+    </>
+   ) : null;
 
   React.useEffect(() => {
     window.addEventListener(
@@ -124,7 +124,7 @@ console.log(userRole)
       </Link>
       {adminDashboard}
       {dealerDashboard}
-      {/* {userDashboard} */}
+      {userDashboard}
       {/* <Typography
         as="li"
         variant="small"

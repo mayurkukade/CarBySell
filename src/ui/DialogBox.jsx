@@ -9,14 +9,25 @@ import {
 } from "@material-tailwind/react";
 import Inputs from "../forms/Inputs";
 import { useBookingRequestMutation } from "../services/carAPI";
-
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router";
 export default function DialogBox({ price, dealer_id, carId }) {
   console.log(carId);
+  const navigate = useNavigate()
   const [bookingRequest] = useBookingRequestMutation();
   const [open, setOpen] = React.useState(false);
   console.log(dealer_id);
   const [inputForm, setInoutForm] = useState("");
-  const handleOpen = () => setOpen(!open);
+  const cookie = Cookies.get("token");
+  console.log(cookie)
+  const handleOpen = () =>{
+if(cookie){
+    setOpen(!open);
+}else{
+navigate('/signin')
+}
+   
+  } 
   const date = new Date(); // Create a new Date object with the current date
   const year = date.getFullYear(); // Get the year (e.g., 2024)
   const month = String(date.getMonth() + 1).padStart(2, "0"); // Get the month (0-indexed, so add 1), pad with leading zero if needed
@@ -33,13 +44,7 @@ export default function DialogBox({ price, dealer_id, carId }) {
   const submitHandler = async (e) => {
     e.preventDefault();
     const formData = {
-      // date:"2024-03-26",
-      // price: price,
-      // askingPrice: 0,
-      // status: "PENDING",
-      // carId: 25,
-      // dealerId: dealer_id,
-      // userId: 1012
+   
       date: formattedDate,
       price: price,
       askingPrice: inputForm,

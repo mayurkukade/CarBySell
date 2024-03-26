@@ -22,7 +22,7 @@ export default function Admin() {
   console.log(pageNo);
   const { data, isLoading, error } = useGetAllDealerQuery(pageNo);
 
-  const [deleteDealer] = useDeleteDealerMutation(2);
+  const [deleteDealer] = useDeleteDealerMutation();
 
 
   const navigate = useNavigate();
