@@ -9,7 +9,6 @@ import { IoMdColorPalette } from "react-icons/io";
 import { GiTyre } from "react-icons/gi";
 import { IoIosArrowForward } from "react-icons/io";
 
-
 const InspectionReport = () => {
   return (
     <>
