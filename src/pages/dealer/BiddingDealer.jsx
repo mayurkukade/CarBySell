@@ -147,9 +147,9 @@ const BiddingDealer = () => {
               </Typography>
             </div>
             <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
-              <Link to={`/bidding/${id}/addcar`}>
+              {/* <Link to={`/bidding/${id}/addcar`}>
                 <Button>Add Car</Button>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </CardHeader>
