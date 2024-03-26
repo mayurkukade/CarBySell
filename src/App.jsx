@@ -25,6 +25,7 @@ import ContactUs from "./pages/ContactUs";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CookiePolicy from "./pages/CookiePolicy";
 import AppLayout2 from "./ui/AppLayout2";
+import PendingRequest from "./pages/PendingRequest";
 
 
 export default function App() {
@@ -36,6 +37,7 @@ export default function App() {
       <Route element={<AppLayout />}>
         <Route path="/carlist" element={<BuyCar />} />
         <Route path="/carlist/cardetails/:carId" element={<CarDetailsById />} />
+        <Route path="/pendinrequest" element={<PendingRequest/>}/>
         <Route
           element={
             <AdminMiddleware allowedRoles={[...Object.values(onlyAdmin)]} />
