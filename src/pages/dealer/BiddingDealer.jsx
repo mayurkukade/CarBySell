@@ -6,12 +6,21 @@ import {
   CardBody,
   CardFooter,
 } from "@material-tailwind/react";
+import { useBiddingAllCardQuery } from "../../services/biddingAPI";
 
 // import TableComponent from "../../components/table/TableComponent";
 // import { Link } from "react-router-dom";
 // import Tooltip from "@material-tailwind/react";
 const BiddingDealer = () => {
+  const{data,isLoading,error} = useBiddingAllCardQuery()
+  console.log(data)
+if(isLoading){
+  return <p>Loading..</p>
+}
 
+if(error){
+  alert(error)
+}
   // const columns = [
   //   {
   //     Header: "ID",
