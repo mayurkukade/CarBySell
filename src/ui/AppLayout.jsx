@@ -1,29 +1,22 @@
+import { Outlet } from "react-router-dom";
+import { StickyNavbar } from "../components/navbars/StickyNavbar";
 
-
-import { Outlet } from 'react-router-dom'
-import { StickyNavbar } from '../components/navbars/StickyNavbar'
-
-import FooterF from '../components/Footer'
-
-
+import FooterF from "../components/Footer";
 
 const AppLayout = () => {
-
-
-  
   return (
     <div>
-      <>
+      <div className="min-h-screen flex flex-col">
         <nav>
-            <StickyNavbar/>
+          <StickyNavbar />
         </nav>
-        <main>
-  <Outlet/>
+        <main className="flex-grow  ">
+          <Outlet />
         </main>
-          <FooterF/>
-      </>
+        <FooterF />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default AppLayout
+export default AppLayout;
