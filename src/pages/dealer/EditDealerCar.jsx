@@ -3,12 +3,14 @@ import Inputs from "../../forms/Inputs";
 import { Textarea } from "@material-tailwind/react";
 import React from "react";
 import {useGetCarByIdQuery} from "../../services/carAPI"
+import { useParams } from "react-router-dom";
 
 export default function EditDealerCar() {
  
-  const {data : Carid} = useGetCarByIdQuery(6);
+  const {carId} = useParams()
+  const {data : Carid} = useGetCarByIdQuery(carId);
   console.log("Carid data :- ",Carid);
-
+  
 
   const [formData, setFormData] = useState({
     //features
