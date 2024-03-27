@@ -77,7 +77,14 @@ export const carApi = apiSlice.injectEndpoints({
         url:`/booking/getByUserId?pageNo=0&userId=1012`
       }),
       providesTags:["CAR"]
+    }),
+    getAllUserConfirm:builder.query({
+      query:()=>({
+        url:`/confirmBooking/getAllBookingsByUserId?userId=1012`
+      }),
+      providesTags:["CAR"]
     })
+
   }),
 });
 
@@ -90,5 +97,6 @@ export const {
   useCarRegisterMutation,
   useCarUpdateMutation,
   useCarRemoveMutation,
-  useUserAllCarRequestQuery
+  useUserAllCarRequestQuery,
+  useGetAllUserConfirmQuery
 } = carApi;

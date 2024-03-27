@@ -63,6 +63,16 @@ console.log(userRole)
           Car List
         </Typography>
       </Link>
+      <Link to={`/dealer/order/${jwtDecodes?.dealerId}`}>
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal"
+        >
+          Order
+        </Typography>
+      </Link>
     </>
   ) : null;
    const userDashboard = userRole?.includes("USER") ? (
@@ -74,7 +84,17 @@ console.log(userRole)
           color="blue-gray"
           className="p-1 font-normal"
         >
-          My All Request
+          All Request
+        </Typography>
+      </Link>
+      <Link to={`/user/booking/${jwtDecodes?.userId}`}>
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal"
+        >
+          Booking
         </Typography>
       </Link>
     </>
