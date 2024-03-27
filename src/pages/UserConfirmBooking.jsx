@@ -6,11 +6,17 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const UserConfirmBooking = () => {
   const { data, isLoading, error } = useGetAllUserConfirmQuery();
+  const navigate = useNavigate() 
   console.log(data);
   console.log(isLoading);
   console.log(error);
+  if(error?.status == 401)
+  {
+    navigate("/signin")
+  }
   return (
     <div>
       <Typography variant="h5" color="blue-gray" className="mb-2 text-center">
@@ -32,9 +38,6 @@ const UserConfirmBooking = () => {
             <Button>Car Details</Button>
           </Link>
         </CardBody>
-        {/* <CardFooter className="pt-0">
-        <Button>Read More</Button>
-      </CardFooter> */}
       </Card>
     </div>
   );
