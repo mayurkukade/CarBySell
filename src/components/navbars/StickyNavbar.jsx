@@ -88,7 +88,7 @@ console.log(userRole)
   ) : null;
    const userDashboard = userRole?.includes("USER") ? (
     <>
-      <Link to={"/pendinrequest"}>
+      <Link to={`/pendinrequest/${jwtDecodes?.userId}`}>
         <Typography
           as="li"
           variant="small"

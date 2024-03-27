@@ -40,7 +40,8 @@ export default function App() {
       <Route element={<AppLayout />}>
         <Route path="/carlist" element={<BuyCar />} />
         <Route path="/carlist/cardetails/:carId" element={<CarDetailsById />} />
-        <Route path="/pendinrequest" element={<PendingRequest/>}/>
+        <Route path="/pendinrequest/:userid" element={<PendingRequest/>}/>
+        <Route path="/user/booking/:id"  element={<UserConfirmBooking/>} />
         <Route
           element={
             <AdminMiddleware allowedRoles={[...Object.values(onlyAdmin)]} />
@@ -78,7 +79,7 @@ export default function App() {
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
           <Route path="/cookiepolicy" element={<CookiePolicy />} />
 
-          <Route path="/user/booking/:id"  element={<UserConfirmBooking/>} />
+          
         </Route>
 
       </Routes>

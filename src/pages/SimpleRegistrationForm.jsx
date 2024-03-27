@@ -1,7 +1,18 @@
 import { useState } from "react";
-import { Input, Button, Checkbox, Typography, CardHeader } from "@material-tailwind/react";
+import {
+  Input,
+  Button,
+  Checkbox,
+  Typography,
+
+} from "@material-tailwind/react";
 import { useCountries } from "use-react-countries";
-import { Menu, MenuHandler, MenuList, MenuItem } from "@material-tailwind/react";
+import {
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
+} from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import Inputs from "../forms/Inputs";
 import CardUi from "../ui/CardUi";
@@ -17,6 +28,7 @@ export function SimpleRegistrationForm() {
     area: "",
     agreeTerms: false,
   });
+  const [password, setPassword] = useState("");
 
   const [errors, setErrors] = useState({
     firstName: "",
@@ -26,6 +38,7 @@ export function SimpleRegistrationForm() {
     address: "",
     city: "",
     area: "",
+    password: "",
     agreeTerms: "",
   });
 
@@ -35,12 +48,13 @@ export function SimpleRegistrationForm() {
       ...prevData,
       [name]: type === "checkbox" ? checked : value,
     }));
-
+  
     // Validate input fields
     if (type !== "checkbox") {
       validateInput(name, value);
     }
   };
+  
 
   const validateInput = (name, value) => {
     let error = "";
@@ -56,7 +70,9 @@ export function SimpleRegistrationForm() {
         error = !/\S+@\S+\.\S+/.test(value) ? "Invalid email address" : "";
         break;
       case "mobileNumber":
-        error = !/^\d{10}$/.test(value) ? "Mobile number must be 10 digits" : "";
+        error = !/^\d{10}$/.test(value)
+          ? "Mobile number must be 10 digits"
+          : "";
         break;
       case "address":
         error = value.trim() === "" ? "Address is required" : "";
@@ -79,7 +95,7 @@ export function SimpleRegistrationForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     // Validate all fields before submission
     let hasError = false;
     Object.keys(formStateData).forEach((key) => {
@@ -88,34 +104,44 @@ export function SimpleRegistrationForm() {
         hasError = true;
       }
     });
-
+  
+    // Validate password separately
+    if (password.trim() === "") {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        password: "Password is required",
+      }));
+      hasError = true;
+    }
+  
     if (!hasError) {
       // Your form submission logic goes here
       console.log("Form data submitted:", formStateData);
     }
   };
+  
 
   const { countries } = useCountries();
-  const defaultCountryIndex = countries.findIndex((country) => country.name === "India");
-  const [country, setCountry] = useState(defaultCountryIndex !== -1 ? defaultCountryIndex : 0);
+  const defaultCountryIndex = countries.findIndex(
+    (country) => country.name === "India"
+  );
+  const [country, setCountry] = useState(
+    defaultCountryIndex !== -1 ? defaultCountryIndex : 0
+  );
   const { name, flags, countryCallingCode } = countries[country];
 
   return (
     <div className="h-auto mt-10 flex justify-center items-center">
       <CardUi color="transparent" shadow={false}>
-        <CardHeader
-          variant="gradient"
-          color="gray"
-          className="mb-4 grid h-28 place-items-center"
-        >
-          <Typography variant="h3" color="white">
+      
+          <Typography variant="h3" color="black" className="text-center">
             Sign Up
           </Typography>
-        </CardHeader>
+        
 
         <form
           onSubmit={handleSubmit}
-          className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
+          className="mt-2 mb-2 w-80 max-w-screen-lg sm:w-96"
         >
           <div className="mb-1 flex flex-col gap-6 w-100">
             <Typography variant="h6" color="blue-gray" className="-mb-3">
@@ -170,23 +196,26 @@ export function SimpleRegistrationForm() {
                   </Button>
                 </MenuHandler>
                 <MenuList className="max-h-[20rem] max-w-[18rem]">
-                  {countries.map(({ name, flags, countryCallingCode }, index) => {
-                    return (
-                      <MenuItem
-                        key={name}
-                        value={name}
-                        className="flex items-center gap-2"
-                        onClick={() => setCountry(index)}
-                      >
-                        <img
-                          src={flags.svg}
-                          alt={name}
-                          className="h-5 w-5 rounded-full object-cover"
-                        />
-                        {name} <span className="ml-auto">{countryCallingCode}</span>
-                      </MenuItem>
-                    );
-                  })}
+                  {countries.map(
+                    ({ name, flags, countryCallingCode }, index) => {
+                      return (
+                        <MenuItem
+                          key={name}
+                          value={name}
+                          className="flex items-center gap-2"
+                          onClick={() => setCountry(index)}
+                        >
+                          <img
+                            src={flags.svg}
+                            alt={name}
+                            className="h-5 w-5 rounded-full object-cover"
+                          />
+                          {name}{" "}
+                          <span className="ml-auto">{countryCallingCode}</span>
+                        </MenuItem>
+                      );
+                    }
+                  )}
                 </MenuList>
               </Menu>
               <Input
@@ -206,6 +235,18 @@ export function SimpleRegistrationForm() {
                 error={errors.mobileNumber}
               />
             </div>
+            <Typography variant="h6" color="blue-gray" className="-mb-3">
+              Password
+            </Typography>
+            <Inputs
+              label={"Password"}
+              type={"password"}
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              error={errors.password}
+            />
+
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Address
             </Typography>

@@ -73,8 +73,9 @@ export const carApi = apiSlice.injectEndpoints({
       invalidatesTags:["CAR"]
     }),
     userAllCarRequest:builder.query({
-      query:()=>({
-        url:`/booking/getByUserId?pageNo=0&userId=1012`
+      query:({page,userid})=>({
+        url:`/booking/getByUserId?pageNo=${page}&userId=${userid}`,
+        transferResponse:console.log(page,userid)
       }),
       providesTags:["CAR"]
     }),
