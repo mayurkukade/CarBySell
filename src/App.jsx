@@ -27,7 +27,6 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CookiePolicy from "./pages/CookiePolicy";
 import AppLayout2 from "./ui/AppLayout2";
 
-
 export default function App() {
   return (
     <>
@@ -35,7 +34,7 @@ export default function App() {
         <Route path="signin" element={<LoginCard />} />
         <Route path="signup" element={<SimpleRegistrationForm />} />
         <Route path="/" element={<Home />} />
-
+        
         <Route element={<AppLayout />}>
           <Route path="/carlist" element={<BuyCar />} />
           <Route path="/carlist/cardetails/:carId" element={<CarDetailsById />} />
