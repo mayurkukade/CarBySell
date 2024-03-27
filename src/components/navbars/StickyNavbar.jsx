@@ -43,16 +43,6 @@ console.log(userRole)
   ) : null;
   const dealerDashboard = userRole?.includes("DEALER") ? (
     <>
-      <Link to={`/dealer/${jwtDecodes?.dealerId}`}>
-        <Typography
-          as="li"
-          variant="small"
-          color="blue-gray"
-          className="p-1 font-normal"
-        >
-          Dashboard
-        </Typography>
-      </Link>
       <Link to={"/carlist"}>
         <Typography
           as="li"
@@ -63,14 +53,35 @@ console.log(userRole)
           Car List
         </Typography>
       </Link>
-      <Link to={`/dealer/order/${jwtDecodes?.dealerId}`}>
+      <Link to={`/dealer/${jwtDecodes?.dealerId}`}>
         <Typography
           as="li"
           variant="small"
           color="blue-gray"
           className="p-1 font-normal"
         >
-          Order
+          Dashboard
+        </Typography>
+      </Link>
+      <Link to={`/dealer/${jwtDecodes?.dealerId}/allpending`} >
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal"
+        >
+          Pendig Request
+        </Typography>
+      </Link>
+    
+      <Link to={`/dealer/${jwtDecodes?.dealerId}/booking/confirm`}>
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal"
+        >
+        Confirm Booking  
         </Typography>
       </Link>
     </>
@@ -94,7 +105,7 @@ console.log(userRole)
           color="blue-gray"
           className="p-1 font-normal"
         >
-          Booking
+          Confirm Booking
         </Typography>
       </Link>
     </>

@@ -28,6 +28,7 @@ import AppLayout2 from "./ui/AppLayout2";
 import PendingRequest from "./pages/PendingRequest";
 import OrderDealer from "./pages/dealer/OrderDealer";
 import UserConfirmBooking from "./pages/UserConfirmBooking";
+import DealerAllPendingRequest from "./pages/dealer/DealerAllPendingRequest";
 
 
 export default function App() {
@@ -61,7 +62,8 @@ export default function App() {
             <Route path="/dealer/:id" element={<DealerDashboard />} />
             <Route path="/dealer/:id/addcar" element={<AddDealerCar />} />
             <Route path="/dealer/:id/car/edit/:carId" element={<EditDealerCar />} />
-            <Route path="/dealer/order/:id" element={<OrderDealer/>}/>
+            <Route path="/dealer/:id/booking/confirm" element={<OrderDealer/>}/>
+            <Route path="/dealer/:id/allpending" element={<DealerAllPendingRequest/>}/>
           </Route>
 
           <Route path="/bidding" element={<BiddingMainPage />} />

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/prop-types */
 import { useEffect } from "react";
 import Cookies from "js-cookie";
@@ -13,7 +14,16 @@ const DealerMiddleware = ({allowedRoles}) => {
     if (token) {
       jwtDecodes = jwtDecode(token);
     }
-  
+  console.log(jwtDecodes)
+      
+        // Check if token is expired
+        const tokenExpirationTime = jwtDecodes.exp * 1000; // Convert to milliseconds
+        const currentTime = Date.now();
+        
+        if (currentTime > tokenExpirationTime) {
+            // If token is expired, navigate to sign-in page
+            return <Navigate to="/signin" />;
+        }
     const userRole = token ? jwtDecodes.authorities[0] : null;
     console.log(userRole)
     useEffect(() => {
