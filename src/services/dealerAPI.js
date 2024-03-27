@@ -36,6 +36,7 @@ export const dealerAPI = apiSlice.injectEndpoints({
     getAllDealerCompleteBooking: builder.query({
       query: ({page,id}) => ({
         url: `/confirmBooking/getAllBookingsByDealerId?pageNo=${page}&dealerId=${id}`,
+        transerResponse:console.log(page,id)
       }),
       providesTags: ["DEALERBOOKING"],
     }),
