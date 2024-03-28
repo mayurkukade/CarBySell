@@ -15,9 +15,11 @@ import { useCarRemoveMutation } from "../../services/carAPI";
 //import AddDealerCar from "../../components/dealer/AddDealerCar";
 const SellForCar = () => {
   const [pageNo, setPageNo] = useState(0);
-  const [carRemove] = useCarRemoveMutation()
-  console.log(pageNo);
   const { id } = useParams();
+  console.log(id);
+  const [carRemove] = useCarRemoveMutation();
+  console.log(pageNo);
+
   console.log(pageNo);
   const { data, isLoading, error } = useDealerIdByCarQuery({ id, pageNo });
   console.log(data);
@@ -25,11 +27,11 @@ const SellForCar = () => {
     return <p>Loading...</p>;
   }
   console.log(error);
-const deleteDealerHandler=async(carId)=>{
-console.log(carId)
-const res = await carRemove(carId)
-console.log(res)
-}
+  const deleteDealerHandler = async (carId) => {
+    console.log(carId);
+    const res = await carRemove({ id, carId });
+    console.log(res);
+  };
   const nextHandler = () => {
     setPageNo((prevPageNo) => {
       // Check if the error status is 404
@@ -89,7 +91,7 @@ console.log(res)
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6"
+                  className="w-6 h-6 cursor-pointer"
                   color="blue"
                 >
                   <path
@@ -107,7 +109,7 @@ console.log(res)
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6"
+                  className="w-6 h-6 cursor-pointer"
                   color="green"
                 >
                   <path
@@ -117,9 +119,7 @@ console.log(res)
                   />
                 </svg>
               </Link>
-              <div
-               onClick={() => deleteDealerHandler(cell.row.values.carId)}
-              >
+              <div onClick={() => deleteDealerHandler(cell.row.values.carId)}>
                 <Tooltip content="Delete">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -127,7 +127,7 @@ console.log(res)
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-6 h-6"
+                    className="w-6 h-6 cursor-pointer"
                     color="red"
                   >
                     <path
