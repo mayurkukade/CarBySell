@@ -6,14 +6,14 @@ export const biddingAPI = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     biddingAllCard: builder.query({
       query: () => ({
-        url: `BeadingCarController/all`,
+        url: `/BeadingCarController/all`,
         method: "GET",
       }),
       providesTags: ["BIDDING"],
     }),
     biddingCarById: builder.query({
-      query: (carId) => ({
-        url: `/BeadingCarController/edit/${carId}`,
+      query: () => ({
+        url: `/BeadingCarController/getbyId/1`,
 
         method: "GET",
       }),
@@ -21,7 +21,7 @@ export const biddingAPI = apiSlice.injectEndpoints({
     }),
     biddingcarUpdate: builder.mutation({
       query: ({ data, carId }) => ({
-        url: `BeadingCarController/edit/${carId}`,
+        url: `/BeadingCarController/edit/${carId}`,
         transferResponse: console.log(data, carId),
         method: "PUT",
         body: data,
@@ -30,13 +30,24 @@ export const biddingAPI = apiSlice.injectEndpoints({
     }),
     biddingRemove: builder.mutation({
       query: (carId) => ({
-        url: `BeadingCarController/delete/${carId}`,
+        url: `/BeadingCarController/delete/${carId}`,
         transferResponse: console.log(carId),
         method: "DELETE",
       }),
       invalidatesTags: ["BIDDING"],
     }),
+
+    biddingCarRegister: builder.mutation({
+      query: (formdata) => ({
+        url: `/BeadingCarController/carregister`,
+        transferResponse: console.log(formdata),
+        method: "POST",
+        body : formdata
+      }),
+      invalidatesTags: ["BIDDING"],
+    }),
+
   }),
 });
 
-export const {useBiddingAllCardQuery,useBiddingCarByIdQuery, useBiddingcarUpdateMutation, useBiddingRemoveMutation} = biddingAPI
+export const {useBiddingAllCardQuery,useBiddingCarByIdQuery, useBiddingcarUpdateMutation, useBiddingRemoveMutation ,useBiddingCarRegisterMutation} = biddingAPI

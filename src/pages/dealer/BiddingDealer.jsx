@@ -55,7 +55,7 @@ const BiddingDealer = () => {
       accessor: "Edit",
       // eslint-disable-next-line no-unused-vars
       Cell: (cell) => {
-        // console.log(cell.row.values.dealer_id);
+         console.log(cell.row.values.beadingCarId);
         return (
           <div>
             <div className="flex gap-2 justify-center items-center  ">
