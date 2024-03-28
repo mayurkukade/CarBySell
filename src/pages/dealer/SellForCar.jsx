@@ -16,10 +16,11 @@ import { useCarRemoveMutation } from "../../services/carAPI";
 const SellForCar = () => {
   const [pageNo, setPageNo] = useState(0);
   const { id } = useParams();
-  console.log(id);
-  const [carRemove] = useCarRemoveMutation();
+  console.log(id)
+  const [carRemove] = useCarRemoveMutation()
   console.log(pageNo);
 
+  
   console.log(pageNo);
   const { data, isLoading, error } = useDealerIdByCarQuery({ id, pageNo });
   console.log(data);
@@ -27,11 +28,11 @@ const SellForCar = () => {
     return <p>Loading...</p>;
   }
   console.log(error);
-  const deleteDealerHandler = async (carId) => {
-    console.log(carId);
-    const res = await carRemove({ id, carId });
-    console.log(res);
-  };
+const deleteDealerHandler=async(carId)=>{
+console.log(carId)
+const res = await carRemove({id,carId})
+console.log(res)
+}
   const nextHandler = () => {
     setPageNo((prevPageNo) => {
       // Check if the error status is 404

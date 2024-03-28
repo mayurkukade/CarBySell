@@ -65,10 +65,10 @@ export const carApi = apiSlice.injectEndpoints({
       invalidatesTags: ["CAR"],
     }),
     carRemove: builder.mutation({
-      query: ({ id, carId }) => ({
+      query: ({id,carId}) => ({
         url: `/car/removeCar?carId=${carId}&dealerId=${id}`,
-        transferResponse: console.log(carId),
-        method: "DELETE",
+        transferResponse:console.log(id,carId),
+        method:'DELETE'
       }),
       invalidatesTags: ["CAR"],
     }),
