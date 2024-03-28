@@ -65,27 +65,26 @@ export const carApi = apiSlice.injectEndpoints({
       invalidatesTags: ["CAR"],
     }),
     carRemove: builder.mutation({
-      query: (carId) => ({
-        url: `/car/removeCar?carId=${carId}`,
-        transferResponse:console.log(carId),
-        method:'DELETE'
+      query: ({ id, carId }) => ({
+        url: `/car/removeCar?carId=${carId}&dealerId=${id}`,
+        transferResponse: console.log(carId),
+        method: "DELETE",
       }),
-      invalidatesTags:["CAR"]
+      invalidatesTags: ["CAR"],
     }),
-    userAllCarRequest:builder.query({
-      query:({page,userid})=>({
-        url:`/booking/getByUserId?pageNo=${page}&userId=${userid}`,
-        transferResponse:console.log(page,userid)
+    userAllCarRequest: builder.query({
+      query: ({ page, userid }) => ({
+        url: `/booking/getByUserId?pageNo=${1}&userId=${userid}`,
+        transferResponse: console.log(page, userid),
       }),
-      providesTags:["CAR"]
+      providesTags: ["CAR"],
     }),
-    getAllUserConfirm:builder.query({
-      query:()=>({
-        url:`/confirmBooking/getAllBookingsByUserId?userId=1012`
+    getAllUserConfirm: builder.query({
+      query: () => ({
+        url: `/confirmBooking/getAllBookingsByUserId?userId=1012`,
       }),
-      providesTags:["CAR"]
-    })
-
+      providesTags: ["CAR"],
+    }),
   }),
 });
 
