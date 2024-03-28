@@ -1,9 +1,11 @@
 import { useGetAllDealerPendingBookingQuery } from "../../services/dealerAPI"
-
+import { useParams } from "react-router-dom"
 import DealerCarPendingRequest from "../../components/carDetails/DealerCarPendingRequest"
 
 const DealerAllPendingRequest = () => {
-    const {data,isLoading,error} = useGetAllDealerPendingBookingQuery()
+  const{id}=useParams()
+  console.log(id)
+    const {data,isLoading,error} = useGetAllDealerPendingBookingQuery(id)
     console.log(data)
 
     const renderData = data?.list.map((item, index) => {

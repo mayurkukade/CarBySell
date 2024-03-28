@@ -41,8 +41,8 @@ export const dealerAPI = apiSlice.injectEndpoints({
       providesTags: ["DEALERBOOKING"],
     }),
     getAllDealerPendingBooking: builder.query({
-      query: () => ({
-        url: `/booking/getPendingBookingDetailsByDealerID?pageNo=0&dealerId=14`,
+      query: (id) => ({
+        url: `/booking/getPendingBookingDetailsByDealerID?pageNo=0&dealerId=${id}`,
       }),
       providesTags: ["DEALERBOOKING"],
     })
