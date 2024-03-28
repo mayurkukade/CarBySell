@@ -23,6 +23,7 @@ export default function DialogBox({ price, dealer_id, carId }) {
   const handleOpen = () =>{
 if(cookie){
     setOpen(!open);
+
 }else{
 navigate('/signin')
 }
@@ -53,7 +54,7 @@ navigate('/signin')
       dealerId: dealer_id,
       userId: numUserId,
     };
-
+console.log(formData)
     const res = await bookingRequest(formData);
     console.log(res);
     if (res?.data) {

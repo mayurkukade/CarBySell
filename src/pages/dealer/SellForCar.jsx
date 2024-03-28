@@ -15,9 +15,12 @@ import { useCarRemoveMutation } from "../../services/carAPI";
 //import AddDealerCar from "../../components/dealer/AddDealerCar";
 const SellForCar = () => {
   const [pageNo, setPageNo] = useState(0);
+  const { id } = useParams();
+  console.log(id)
   const [carRemove] = useCarRemoveMutation()
   console.log(pageNo);
-  const { id } = useParams();
+
+  
   console.log(pageNo);
   const { data, isLoading, error } = useDealerIdByCarQuery({ id, pageNo });
   console.log(data);
@@ -27,7 +30,7 @@ const SellForCar = () => {
   console.log(error);
 const deleteDealerHandler=async(carId)=>{
 console.log(carId)
-const res = await carRemove(carId)
+const res = await carRemove({id,carId})
 console.log(res)
 }
   const nextHandler = () => {
@@ -89,7 +92,7 @@ console.log(res)
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6"
+                  className="w-6 h-6 cursor-pointer"
                   color="blue"
                 >
                   <path
@@ -127,7 +130,7 @@ console.log(res)
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-6 h-6"
+                    className="w-6 h-6 cursor-pointer"
                     color="red"
                   >
                     <path
