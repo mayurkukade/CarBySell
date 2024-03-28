@@ -6,7 +6,7 @@ import {
   IconButton,
   Collapse,
 } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from 'react-router-dom';
 
 import Cookies from "js-cookie";
 import Profile from "../Profile/Profile";
@@ -24,7 +24,8 @@ export function StickyNavbar() {
   console.log(jwtDecodes);
   const userRole = token ? jwtDecodes?.authorities :null;
 
-
+  const location = useLocation();
+  const active = location.pathname === `/dealer/${jwtDecodes?.dealerId}`;
  
 console.log(userRole)
   const adminDashboard = userRole?.includes("ADMIN") ? (
@@ -34,7 +35,7 @@ console.log(userRole)
           as="li"
           variant="small"
           color="blue-gray"
-          className="p-1 font-normal"
+          className={`p-3 rounded-md font-normal ${window.location.pathname === "/admin" ? "bg-indigo-200 text-white" : ""}`}
         >
           Dashboard
         </Typography>
@@ -48,17 +49,19 @@ console.log(userRole)
           as="li"
           variant="small"
           color="blue-gray"
-          className="p-1 font-normal"
+          className={`p-3 rounded-md font-normal ${window.location.pathname === "/carlist" ? "bg-indigo-200 text-white" : ""}`}
         >
           Car List
         </Typography>
       </Link>
+     
+    
       <Link to={`/dealer/${jwtDecodes?.dealerId}`}>
         <Typography
           as="li"
           variant="small"
           color="blue-gray"
-          className="p-1 font-normal"
+          className={`p-3 rounded-md font-normal ${active ? "bg-indigo-200 text-white" : ""}`}
         >
           Dashboard
         </Typography>
@@ -68,7 +71,7 @@ console.log(userRole)
           as="li"
           variant="small"
           color="blue-gray"
-          className="p-1 font-normal"
+          className={`p-3 rounded-md font-normal ${window.location.pathname === `/dealer/${jwtDecodes?.dealerId}/allpending` ? "bg-indigo-200 text-white" : ""}`}
         >
           Pendig Request
         </Typography>
@@ -79,7 +82,7 @@ console.log(userRole)
           as="li"
           variant="small"
           color="blue-gray"
-          className="p-1 font-normal"
+          className={`p-3 rounded-md font-normal ${window.location.pathname === `/dealer/${jwtDecodes?.dealerId}/booking/confirm` ? "bg-indigo-200 text-white" : ""}`}
         >
         Confirm Booking  
         </Typography>
@@ -93,7 +96,7 @@ console.log(userRole)
           as="li"
           variant="small"
           color="blue-gray"
-          className="p-1 font-normal"
+          className={`p-3 rounded-md font-normal ${window.location.pathname === "/pendinrequest" ? "bg-indigo-200 text-white" : ""}`}
         >
           All Request
         </Typography>
@@ -103,7 +106,7 @@ console.log(userRole)
           as="li"
           variant="small"
           color="blue-gray"
-          className="p-1 font-normal"
+          className={`p-3 rounded-md font-normal ${window.location.pathname === `/user/booking/${jwtDecodes?.userId}` ? "bg-indigo-200 text-white" : ""}`}
         >
           Confirm Booking
         </Typography>
@@ -125,7 +128,7 @@ console.log(userRole)
           as="li"
           variant="small"
           color="blue-gray"
-          className="p-1 font-normal"
+          className={`p-3 rounded-md font-normal ${window.location.pathname === "/" ? "bg-indigo-200 text-white" : ""}`}
         >
           Home
         </Typography>
@@ -136,7 +139,7 @@ console.log(userRole)
           as="li"
           variant="small"
           color="blue-gray"
-          className="p-1 font-normal"
+          className={`p-3 rounded-md font-normal ${window.location.pathname === "/carlist" ? "bg-indigo-200 text-white" : ""}`}
         >
           Buy Car
         </Typography>
@@ -148,7 +151,7 @@ console.log(userRole)
           as="li"
           variant="small"
           color="blue-gray"
-          className="p-1 font-normal"
+          className={`p-3 rounded-md font-normal ${window.location.pathname === "/bidding" ? "bg-indigo-200 text-white" : ""}`}
         >
           Live
         </Typography>
