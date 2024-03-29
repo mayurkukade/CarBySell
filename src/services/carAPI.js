@@ -85,6 +85,15 @@ export const carApi = apiSlice.injectEndpoints({
       }),
       providesTags: ["CAR"],
     }),
+
+    getPendingrequest : builder.query({
+      query : () => ({
+        url : `/booking/getPendingBookingDetailsByCarID?pageNo=0&CarId=73`,
+        method : 'GET',
+        
+      }),
+      providesTags : ["CAR"],
+    })
   }),
 });
 
@@ -98,5 +107,6 @@ export const {
   useCarUpdateMutation,
   useCarRemoveMutation,
   useUserAllCarRequestQuery,
-  useGetAllUserConfirmQuery
+  useGetAllUserConfirmQuery,
+  useGetPendingrequestQuery
 } = carApi;

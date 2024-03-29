@@ -14,7 +14,7 @@ export function CardDefault({ data }) {
       <CardBody>
         <Typography>{data.year}</Typography>
         <Typography variant="h5" color="blue-gray" className="mb-2">
-           {data.brand} {data.model} 
+           {data.brand} {data.model} {data.carId}
         </Typography>
         <p className="text-sm uppercase">
           {data.kmDriven} {data.fuelType} {data.transmission}
