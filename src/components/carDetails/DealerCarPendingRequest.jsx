@@ -3,8 +3,24 @@
 import { Button, Chip } from "@material-tailwind/react";
 import CardUi from "../../ui/CardUi";
 import { Link } from "react-router-dom";
+import { useConfirmBookingMutation } from "../../services/carAPI";
 const DealerCarPendingRequest = ({ item }) => {
+  const [confirmBooking,{isLoading,error}] = useConfirmBookingMutation()
   console.log(item);
+  console.log(isLoading)
+  console.log(error)
+  const handleSubmit = async(e)=>{
+    e.preventDefault()
+    const data = {
+      "date": "2024-04-01",
+      "price": 5000000,
+      "carId": 73,
+      "userId": 1012,
+      "dealerId": 14
+    }
+    const res = await confirmBooking(data)
+    console.log(res)
+  }
   return (
     <div className="w-full flex justify-center ">
       <CardUi>
@@ -56,7 +72,7 @@ const DealerCarPendingRequest = ({ item }) => {
                   color="green"
                   className="flex gap-2 items-center mt-3 font-[latto]"
                 >
-                  <span>Confirm Request </span>
+                  <span onClick={handleSubmit}>Confirm Request </span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"

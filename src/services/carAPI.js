@@ -85,6 +85,14 @@ export const carApi = apiSlice.injectEndpoints({
       }),
       providesTags: ["CAR"],
     }),
+    confirmBooking:builder.mutation({
+      query:(data)=>({
+        url:"/confirmBooking/book",
+        method:"POST",
+        transferResponse:console.log(data)
+      }),
+      invalidatesTags:["CAR"]
+    })
   }),
 });
 
@@ -98,5 +106,6 @@ export const {
   useCarUpdateMutation,
   useCarRemoveMutation,
   useUserAllCarRequestQuery,
-  useGetAllUserConfirmQuery
+  useGetAllUserConfirmQuery,
+  useConfirmBookingMutation
 } = carApi;
