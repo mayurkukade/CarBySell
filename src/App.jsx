@@ -29,6 +29,8 @@ import PendingRequest from "./pages/PendingRequest";
 import OrderDealer from "./pages/dealer/OrderDealer";
 import UserConfirmBooking from "./pages/UserConfirmBooking";
 import DealerAllPendingRequest from "./pages/dealer/DealerAllPendingRequest";
+import BiddingCarDetailsById from "./pages/bidding/BiddingCarDetailsById";
+import DealerPendingRequest from "./pages/dealer/DealerPendingRequest";
 
 
 export default function App() {
@@ -40,6 +42,7 @@ export default function App() {
       <Route element={<AppLayout />}>
         <Route path="/carlist" element={<BuyCar />} />
         <Route path="/carlist/cardetails/:carId" element={<CarDetailsById />} />
+        <Route path="/biddinglist/cardetails/:carId" element={<BiddingCarDetailsById />} />
         <Route path="/pendinrequest/:userid" element={<PendingRequest/>}/>
         <Route path="/user/booking/:id"  element={<UserConfirmBooking/>} />
         <Route
@@ -65,6 +68,7 @@ export default function App() {
             <Route path="/dealer/:id/car/edit/:carId" element={<EditDealerCar />} />
             <Route path="/dealer/:id/booking/confirm" element={<OrderDealer/>}/>
             <Route path="/dealer/:id/allpending" element={<DealerAllPendingRequest/>}/>
+            <Route path="/car/:CarId/pendinguser" element={<DealerPendingRequest/>}/>
           </Route>
 
           <Route path="/bidding" element={<BiddingMainPage />} />

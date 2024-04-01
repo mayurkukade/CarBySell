@@ -10,6 +10,8 @@ import { useBiddingAllCardQuery } from "../../services/biddingAPI";
 // import Tooltip from "@material-tailwind/react";
 import TableComponent from "../../components/table/TableComponent";
 import { Link } from "react-router-dom";
+import { MdPendingActions } from "react-icons/md";
+import StatusDialogeBox from "../../ui/StatusDialogeBox";
 // import Tooltip from "@material-tailwind/react";
 const BiddingDealer = () => {
   const { data, isLoading, error } = useBiddingAllCardQuery();
@@ -51,6 +53,21 @@ const BiddingDealer = () => {
     },
 
     {
+      Header: "Status",
+      accessor: "carStatus",
+      Cell: (cell) => {
+        console.log(cell.row.values.carStatus);
+        return (
+          <div>
+            <div className="flex gap-2 justify-center items-center  ">
+             <StatusDialogeBox status={cell.row.values.carStatus}/>
+             </div>
+          </div>
+        );
+      },
+    },
+
+    {
       Header: "Edit",
       accessor: "Edit",
       // eslint-disable-next-line no-unused-vars
@@ -59,7 +76,14 @@ const BiddingDealer = () => {
         return (
           <div>
             <div className="flex gap-2 justify-center items-center  ">
-              <Link to={`/carlist/cardetails/${cell.row.values.beadingCarId}`}>
+               <Link>
+               <div className="w- h-">
+                  <MdPendingActions color="#b09b12" className="h-6 w-6" />
+               </div>
+               
+               </Link>
+
+              <Link to={`/biddinglist/cardetails/${cell.row.values.beadingCarId}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

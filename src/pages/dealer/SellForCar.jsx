@@ -12,7 +12,10 @@ import {
 } from "@material-tailwind/react";
 import { Link, useParams } from "react-router-dom";
 import { useCarRemoveMutation } from "../../services/carAPI";
+import { MdPendingActions } from "react-icons/md";
+import StatusDialogeBox from "../../ui/StatusDialogeBox";
 //import AddDealerCar from "../../components/dealer/AddDealerCar";
+
 const SellForCar = () => {
   const [pageNo, setPageNo] = useState(0);
   const { id } = useParams();
@@ -24,6 +27,9 @@ const SellForCar = () => {
   console.log(pageNo);
   const { data, isLoading, error } = useDealerIdByCarQuery({ id, pageNo });
   console.log(data);
+  
+  // const carstatus = data.list
+ 
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -76,6 +82,20 @@ console.log(res)
       accessor: "price",
       disableSortBy: true,
     },
+    {
+      Header: "Status",
+      accessor: "carStatus",
+      Cell: (cell) => {
+        console.log(cell.row.values.carStatus);
+        return (
+          <div>
+            <div className="flex gap-2 justify-center items-center  ">
+             <StatusDialogeBox status={cell.row.values.carStatus}/>
+             </div>
+          </div>
+        );
+      },
+    },
 
     {
       Header: "Edit",
@@ -85,6 +105,13 @@ console.log(res)
         return (
           <div>
             <div className="flex gap-2 justify-center items-center  ">
+
+            <Link to={`/car/${cell.row.values.carId}/pendinguser`}>
+               <div className="w- h-">
+                  <MdPendingActions color="#b09b12" className="h-6 w-6" />
+               </div>
+               
+               </Link>
               <Link to={`/carlist/cardetails/${cell.row.values.carId}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
