@@ -85,6 +85,15 @@ export const carApi = apiSlice.injectEndpoints({
       }),
       providesTags: ["CAR"],
     }),
+
+    getPendingrequest : builder.query({
+      query : ({CarId,currentpage}) => ({
+        url : `/booking/getPendingBookingDetailsByCarID?pageNo=${currentpage}&CarId=${CarId}`,
+        method : 'GET',
+        
+      }),
+      providesTags : ["CAR"],
+    })
     confirmBooking:builder.mutation({
       query:(data)=>({
         url:"/confirmBooking/book",
@@ -107,5 +116,5 @@ export const {
   useCarRemoveMutation,
   useUserAllCarRequestQuery,
   useGetAllUserConfirmQuery,
-  useConfirmBookingMutation
+  useGetPendingrequestQuery
 } = carApi;
