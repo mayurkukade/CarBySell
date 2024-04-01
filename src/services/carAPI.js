@@ -93,7 +93,7 @@ export const carApi = apiSlice.injectEndpoints({
         
       }),
       providesTags : ["CAR"],
-    })
+    }),
     confirmBooking:builder.mutation({
       query:(data)=>({
         url:"/confirmBooking/book",
