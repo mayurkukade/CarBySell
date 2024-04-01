@@ -13,6 +13,7 @@ import {
 import { Link, useParams } from "react-router-dom";
 import { useCarRemoveMutation } from "../../services/carAPI";
 import { MdPendingActions } from "react-icons/md";
+import StatusDialogeBox from "../../ui/StatusDialogeBox";
 //import AddDealerCar from "../../components/dealer/AddDealerCar";
 
 const SellForCar = () => {
@@ -25,6 +26,9 @@ const SellForCar = () => {
   console.log(pageNo);
   const { data, isLoading, error } = useDealerIdByCarQuery({ id, pageNo });
   console.log(data);
+  
+  // const carstatus = data.list
+ 
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -76,6 +80,20 @@ const SellForCar = () => {
       Header: "Price",
       accessor: "price",
       disableSortBy: true,
+    },
+    {
+      Header: "Status",
+      accessor: "carStatus",
+      Cell: (cell) => {
+        console.log(cell.row.values.carStatus);
+        return (
+          <div>
+            <div className="flex gap-2 justify-center items-center  ">
+             <StatusDialogeBox status={cell.row.values.carStatus}/>
+             </div>
+          </div>
+        );
+      },
     },
 
     {

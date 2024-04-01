@@ -87,8 +87,8 @@ export const carApi = apiSlice.injectEndpoints({
     }),
 
     getPendingrequest : builder.query({
-      query : () => ({
-        url : `/booking/getPendingBookingDetailsByCarID?pageNo=0&CarId=73`,
+      query : ({CarId,currentpage}) => ({
+        url : `/booking/getPendingBookingDetailsByCarID?pageNo=${currentpage}&CarId=${CarId}`,
         method : 'GET',
         
       }),

@@ -7,15 +7,14 @@ export default function DealerPendingRequest() {
   const { CarId } = useParams();
 
   console.log(CarId);
-  const { data, error } = useGetPendingrequestQuery();
-
-  console.log(data);
+  
   const [currentpage, setCurrentPage] = useState(0);
-  console.log(error);
+  
   const totalPages = 8;
-
+  const { data, error } = useGetPendingrequestQuery({CarId,currentpage});
   console.log(totalPages);
-
+  console.log(error);
+  console.log(data);
   const nextpage = () => {
     if (totalPages == 1) {
       return;
@@ -35,7 +34,7 @@ export default function DealerPendingRequest() {
   return (
     <div className="flex justify-center min-h-screen items-center">
         
-      {data.object.map((item, index) => (
+      {data?.object?.map((item, index) => (
         <div key={index}>
           <Card className="mt-6 w-96">
           <p className="font-semibold  ml-10 mt-5 text-3xl">Pending Request</p>

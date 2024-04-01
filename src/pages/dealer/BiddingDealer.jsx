@@ -11,6 +11,7 @@ import { useBiddingAllCardQuery } from "../../services/biddingAPI";
 import TableComponent from "../../components/table/TableComponent";
 import { Link } from "react-router-dom";
 import { MdPendingActions } from "react-icons/md";
+import StatusDialogeBox from "../../ui/StatusDialogeBox";
 // import Tooltip from "@material-tailwind/react";
 const BiddingDealer = () => {
   const { data, isLoading, error } = useBiddingAllCardQuery();
@@ -49,6 +50,21 @@ const BiddingDealer = () => {
       Header: "Price",
       accessor: "price",
       disableSortBy: true,
+    },
+
+    {
+      Header: "Status",
+      accessor: "carStatus",
+      Cell: (cell) => {
+        console.log(cell.row.values.carStatus);
+        return (
+          <div>
+            <div className="flex gap-2 justify-center items-center  ">
+             <StatusDialogeBox status={cell.row.values.carStatus}/>
+             </div>
+          </div>
+        );
+      },
     },
 
     {
