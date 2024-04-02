@@ -47,7 +47,35 @@ export const biddingAPI = apiSlice.injectEndpoints({
       invalidatesTags: ["BIDDING"],
     }),
 
+    startBiddingSetTime: builder.mutation({
+      query: (settime) => ({
+        url: `/Bidding/v1/SetTime`,
+        transferResponse: console.log("Data to backend :- ",settime),
+        method: "POST",
+        body : settime
+      }),
+      invalidatesTags: ["BIDDING"],
+    }),
+
+    createBidding: builder.mutation({
+      query: (bidding) => ({
+        url: `/Bidding/v1/CreateBidding`,
+        transferResponse: console.log("Data to backend :- ",bidding),
+        method: "POST",
+       body : bidding
+      }),
+      invalidatesTags: ["BIDDING"],
+    }),
+
+    bidCarbyId : builder.query({
+      query : () => ({
+        url : `/Bidding/v1/getById?bidCarId=3&beadingCarId=22`,
+        method : "GET"
+      }),
+      providesTags: ["BIDDING"],
+    }),
+
   }),
 });
 
-export const {useBiddingAllCardQuery,useBiddingCarByIdQuery, useBiddingcarUpdateMutation, useBiddingRemoveMutation ,useBiddingCarRegisterMutation} = biddingAPI
+export const {useBiddingAllCardQuery,useBiddingCarByIdQuery, useBiddingcarUpdateMutation, useBiddingRemoveMutation ,useBiddingCarRegisterMutation , useStartBiddingSetTimeMutation ,useCreateBiddingMutation, useBidCarbyIdQuery } = biddingAPI

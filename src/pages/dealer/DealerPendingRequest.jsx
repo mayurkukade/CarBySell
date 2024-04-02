@@ -35,9 +35,9 @@ export default function DealerPendingRequest() {
   return (
     <div className="flex justify-center min-h-screen items-center">
         {error?.status === 404 ? (
-      <div>
+   
         <p className="text-3xl font-semibold ">No Pending Request</p>
-      </div>
+      
     ) : (
       data?.object?.map((item, index) => (
         <div key={index}>

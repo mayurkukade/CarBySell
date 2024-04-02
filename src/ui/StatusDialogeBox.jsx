@@ -13,7 +13,7 @@ export default function StatusDialogeBox() {
  
   const handleOpen = () => setOpen(!open);
 
-  const [selectedOption, setSelectedOption] = React.useState(""); 
+  const [selectedOption, setSelectedOption] = React.useState("active"); 
   const handleSelectChange = (event) => {
     setSelectedOption(event.target.value); 
   };
