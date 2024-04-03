@@ -31,10 +31,15 @@ export default function DealerPendingRequest() {
     }
   };
 
+ 
   return (
     <div className="flex justify-center min-h-screen items-center">
-        
-      {data?.object?.map((item, index) => (
+        {error?.status === 404 ? (
+   
+        <p className="text-3xl font-semibold ">No Pending Request</p>
+      
+    ) : (
+      data?.object?.map((item, index) => (
         <div key={index}>
           <Card className="mt-6 w-96">
           <p className="font-semibold  ml-10 mt-5 text-3xl">Pending Request</p>
@@ -114,7 +119,9 @@ export default function DealerPendingRequest() {
             </CardFooter>
           </Card>
         </div>
-      ))}
+      ))
+    )}
+      
       <div></div>
     </div>
   );

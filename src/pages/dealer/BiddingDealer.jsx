@@ -12,6 +12,8 @@ import TableComponent from "../../components/table/TableComponent";
 import { Link } from "react-router-dom";
 import { MdPendingActions } from "react-icons/md";
 import StatusDialogeBox from "../../ui/StatusDialogeBox";
+import BiddingDailogeBox from "../../ui/BiddingDialogeBox";
+import BiddingSetTime from "../../ui/BiddingSetTime";
 // import Tooltip from "@material-tailwind/react";
 const BiddingDealer = () => {
   const { data, isLoading, error } = useBiddingAllCardQuery();
@@ -61,6 +63,34 @@ const BiddingDealer = () => {
           <div>
             <div className="flex gap-2 justify-center items-center  ">
              <StatusDialogeBox status={cell.row.values.carStatus}/>
+             </div>
+          </div>
+        );
+      },
+    },
+    {
+      Header: "Set Time",
+      accessor: "",
+      Cell: (cell) => {
+        console.log(cell.row.values.carStatus);
+        return (
+          <div>
+            <div className="flex gap-2 justify-center items-center  ">
+             <BiddingSetTime status={cell.row.values.carStatus}/>
+             </div>
+          </div>
+        );
+      },
+    },
+    {
+      Header: "Start Bidiing",
+      accessor: "",
+      Cell: (cell) => {
+        console.log(cell.row.values.carStatus);
+        return (
+          <div>
+            <div className="flex gap-2 justify-center items-center  ">
+             <BiddingDailogeBox/>
              </div>
           </div>
         );
