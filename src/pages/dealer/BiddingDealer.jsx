@@ -106,7 +106,7 @@ const BiddingDealer = () => {
         return (
           <div>
             <div className="flex gap-2 justify-center items-center  ">
-               <Link>
+               <Link to={`/car/${cell.row.values.beadingCarId}/pendingreq`}>
                <div className="w- h-">
                   <MdPendingActions color="#b09b12" className="h-6 w-6" />
                </div>

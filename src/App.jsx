@@ -31,6 +31,7 @@ import UserConfirmBooking from "./pages/UserConfirmBooking";
 import DealerAllPendingRequest from "./pages/dealer/DealerAllPendingRequest";
 import BiddingCarDetailsById from "./pages/bidding/BiddingCarDetailsById";
 import DealerPendingRequest from "./pages/dealer/DealerPendingRequest";
+import BiddingDealerPendingReq from "./pages/bidding/BiddingDealerPendingReq";
 
 
 export default function App() {
@@ -75,6 +76,7 @@ export default function App() {
           <Route path="/bidding/:id/addcar" element={<BiddingAddCar />} />
           <Route path="/bidding/:id/editcar" element={<BiddingEditCar />} />
           <Route path="/bidding/:id/:carid/settimer" element={<SetTimer />} />
+          <Route path="/car/:CarId/pendingreq" element={<BiddingDealerPendingReq/>}/>
         </Route>
 
         <Route element={<AppLayout2 />}>
