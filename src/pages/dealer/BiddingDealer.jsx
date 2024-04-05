@@ -6,7 +6,7 @@ import {
   CardBody,
   CardFooter,
 } from "@material-tailwind/react";
-import { useBiddingAllCardQuery } from "../../services/biddingAPI";
+import { useBiddingCarByDealerIdQuery } from "../../services/biddingAPI";
 // import Tooltip from "@material-tailwind/react";
 import TableComponent from "../../components/table/TableComponent";
 import { Link } from "react-router-dom";
@@ -16,8 +16,9 @@ import BiddingDailogeBox from "../../ui/BiddingDialogeBox";
 import BiddingSetTime from "../../ui/BiddingSetTime";
 // import Tooltip from "@material-tailwind/react";
 const BiddingDealer = () => {
-  const { data, isLoading, error } = useBiddingAllCardQuery();
+  const { data, isLoading, error } = useBiddingCarByDealerIdQuery();
   console.log(data);
+  
   if (isLoading) {
     return <p>Loading..</p>;
   }

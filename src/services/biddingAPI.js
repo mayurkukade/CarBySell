@@ -11,6 +11,15 @@ export const biddingAPI = apiSlice.injectEndpoints({
       }),
       providesTags: ["BIDDING"],
     }),
+
+    biddingCarByDealerId: builder.query({
+      query: () => ({
+        url: `/BeadingCarController/getByUserId1/1055`,
+        method: "GET",
+      }),
+      providesTags: ["BIDDING"],
+    }),
+
     biddingCarById: builder.query({
       query: (carId) => ({
         url: `/BeadingCarController/getbyId/${carId}`,
@@ -78,4 +87,12 @@ export const biddingAPI = apiSlice.injectEndpoints({
   }),
 });
 
-export const {useBiddingAllCardQuery,useBiddingCarByIdQuery, useBiddingcarUpdateMutation, useBiddingRemoveMutation ,useBiddingCarRegisterMutation , useStartBiddingSetTimeMutation ,useCreateBiddingMutation, useBidCarbyIdQuery } = biddingAPI
+export const {useBiddingAllCardQuery,
+  useBiddingCarByIdQuery, 
+  useBiddingcarUpdateMutation, 
+  useBiddingRemoveMutation ,
+  useBiddingCarRegisterMutation , 
+  useStartBiddingSetTimeMutation ,
+  useCreateBiddingMutation, 
+  useBidCarbyIdQuery, 
+  useBiddingCarByDealerIdQuery } = biddingAPI
