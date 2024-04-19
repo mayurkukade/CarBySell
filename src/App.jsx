@@ -37,10 +37,12 @@ import BiddingDealerPendingReq from "./pages/bidding/BiddingDealerPendingReq";
 export default function App() {
   return (
     <Routes>
-      <Route path="signin" element={<LoginCard />} />
-      <Route path="signup" element={<SimpleRegistrationForm />} />
+      
       <Route path="/" element={<Home />} />
       <Route element={<AppLayout />}>
+      <Route path="signin" element={<LoginCard />} />
+      <Route path="signup" element={<SimpleRegistrationForm />} />
+      
         <Route path="/carlist" element={<BuyCar />} />
         <Route path="/carlist/cardetails/:carId" element={<CarDetailsById />} />
         <Route path="/biddinglist/cardetails/:carId" element={<BiddingCarDetailsById />} />

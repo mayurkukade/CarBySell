@@ -7,15 +7,18 @@ import {
   CardFooter,
 } from "@material-tailwind/react";
 import { useBiddingCarByDealerIdQuery } from "../../services/biddingAPI";
-// import Tooltip from "@material-tailwind/react";
+
 import TableComponent from "../../components/table/TableComponent";
-import { Link } from "react-router-dom";
+import { Link,useParams } from "react-router-dom";
 import { MdPendingActions } from "react-icons/md";
 import StatusDialogeBox from "../../ui/StatusDialogeBox";
 import BiddingDailogeBox from "../../ui/BiddingDialogeBox";
 import BiddingSetTime from "../../ui/BiddingSetTime";
-// import Tooltip from "@material-tailwind/react";
+
+
 const BiddingDealer = () => {
+  const {userId} = useParams()
+  console.log(userId)
   const { data, isLoading, error } = useBiddingCarByDealerIdQuery();
   console.log(data);
   

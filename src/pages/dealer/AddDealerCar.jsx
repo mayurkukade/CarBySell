@@ -45,7 +45,7 @@ const date = new Date(); // Create a new Date object with the current date
   const day = String(date.getDate()).padStart(2, "0"); // Get the day of the month, pad with leading zero if needed
  
   const formattedDate = `${year}-${month}-${day}`;
-  console.log(formattedDate)
+ // console.log(formattedDate)
   const handleSubmit = async(event) => {
     event.preventDefault();
 

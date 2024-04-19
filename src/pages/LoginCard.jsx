@@ -53,6 +53,7 @@ export function LoginCard() {
         localStorage.setItem("userInfo", jwtDecodesJson);
         console.log(jwtDecodes);
         navigate("/");
+        alert("You are sucessfully login");
         dispatch(setToken(data));
       } else {
         alert("email and password is not match");
