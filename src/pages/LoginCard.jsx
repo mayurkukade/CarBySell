@@ -52,7 +52,8 @@ export function LoginCard() {
         const jwtDecodesJson = JSON.stringify(jwtDecodes);
         localStorage.setItem("userInfo", jwtDecodesJson);
         console.log(jwtDecodes);
-        navigate(-1);
+        navigate("/");
+        alert("You are sucessfully login");
         dispatch(setToken(data));
       } else {
         alert("email and password is not match");

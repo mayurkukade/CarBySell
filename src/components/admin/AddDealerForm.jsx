@@ -8,22 +8,25 @@ import { useSignUpMutation } from "../../services/authAPI";
 export function AddDealerForm() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
+  const [SignUp] = useSignUpMutation();
 
   // Form state
   const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    mobileNo: "",
     firstName: "",
     lastName: "",
-    email: "",
-    mobileNo: "",
-    password: "",
-    area: "",
-    city: "",
     address: "",
-    shopName: "",
-
+    city: "",
     roles: "DEALER",
+    document: 0,
+    shopName: "",
+    area: "",
+    status: false,
+    userType: "",
   });
-  const [SignUp] = useSignUpMutation(formData);
+  
   // Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,9 +40,13 @@ export function AddDealerForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Perform form submission logic here, e.g., send data to backend
-    console.log(formData);
-    const res = await SignUp(formData);
-    console.log(res);
+    try {
+      const { data } = await SignUp(formData);
+      console.log(data);
+      alert("Register Sucessfully")
+    } catch (error) {
+      console.log(error);
+    }
     // Reset form after submission
     setFormData({
       firstName: "",

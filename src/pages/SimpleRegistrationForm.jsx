@@ -16,19 +16,26 @@ import {
 import { Link } from "react-router-dom";
 import Inputs from "../forms/Inputs";
 import CardUi from "../ui/CardUi";
+import {useSignUpMutation} from "../services/authAPI"
 
 export function SimpleRegistrationForm() {
+  const [SignUp] = useSignUpMutation();
   const [formStateData, setFormData] = useState({
+    email: "",
+    password: "",
+    mobileNo: "",
     firstName: "",
     lastName: "",
-    email: "",
-    mobileNumber: "",
     address: "",
     city: "",
+    roles: "USER",
+    document: 0,
+    shopName: "",
     area: "",
-    agreeTerms: false,
+    status: false,
+    userType: "",
   });
-  const [password, setPassword] = useState("");
+  // const [password, setPassword] = useState("");
 
   const [errors, setErrors] = useState({
     firstName: "",
@@ -41,6 +48,8 @@ export function SimpleRegistrationForm() {
     password: "",
     agreeTerms: "",
   });
+
+  
 
   const handleChange = (e) => {
     const { name, value, checked, type } = e.target;
@@ -93,7 +102,7 @@ export function SimpleRegistrationForm() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
   
     // Validate all fields before submission
@@ -106,7 +115,7 @@ export function SimpleRegistrationForm() {
     });
   
     // Validate password separately
-    if (password.trim() === "") {
+    if (formStateData.password.trim() === "") {
       setErrors((prevErrors) => ({
         ...prevErrors,
         password: "Password is required",
@@ -117,6 +126,14 @@ export function SimpleRegistrationForm() {
     if (!hasError) {
       // Your form submission logic goes here
       console.log("Form data submitted:", formStateData);
+    }
+
+    try {
+      const { data } = await SignUp(formStateData);
+      console.log(data);
+      alert("Register Sucessfully")
+    } catch (error) {
+      console.log(error);
     }
   };
   
@@ -228,11 +245,11 @@ export function SimpleRegistrationForm() {
                   className: "min-w-0",
                 }}
                 label={"Mobile Number"}
-                name="mobileNumber"
-                value={formStateData.mobileNumber}
+                name="mobileNo"
+                value={formStateData.mobileNo}
                 onChange={handleChange}
                 type={"number"}
-                error={errors.mobileNumber}
+                // error={errors.mobileNumber}
               />
             </div>
             <Typography variant="h6" color="blue-gray" className="-mb-3">
@@ -242,10 +259,23 @@ export function SimpleRegistrationForm() {
               label={"Password"}
               type={"password"}
               name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={formStateData.password}
+              onChange={handleChange}
               error={errors.password}
             />
+            {/* <Typography variant="h6" color="blue-gray" className="-mb-3">
+              Select Role
+            </Typography>
+            <select
+        className="border border-gray-400 p-3 rounded-md"
+        name="roles" // Make sure name matches the state property name
+        value={formStateData.roles} // Bind selected value to form state
+        onChange={handleChange}
+      >
+        <option value="">Select</option>
+        <option value="DEALER">Dealer</option>
+        <option value="USER">User</option>
+      </select> */}
 
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Address
@@ -277,6 +307,18 @@ export function SimpleRegistrationForm() {
               onChange={handleChange}
               error={errors.area}
             />
+
+            <Typography variant="h6" color="blue-gray" className="-mb-3">
+              Shop Name
+            </Typography>
+            <Inputs
+              label={"Shop Name"}
+              name="shopName"
+              value={formStateData.shopName}
+              onChange={handleChange}
+              // error={errors.area}
+            />
+
           </div>
           <Checkbox
             label={
@@ -295,10 +337,10 @@ export function SimpleRegistrationForm() {
               </Typography>
             }
             containerProps={{ className: "-ml-2.5" }}
-            name="agreeTerms"
-            checked={formStateData.agreeTerms}
+            name="status"
+            checked={formStateData.status}
             onChange={handleChange}
-            error={errors.agreeTerms}
+            // error={errors.agreeTerms}
           />
           <Button className="mt-6" fullWidth type="submit">
             Sign Up

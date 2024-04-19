@@ -6,18 +6,22 @@ import {
   CardBody,
   CardFooter,
 } from "@material-tailwind/react";
-import { useBiddingAllCardQuery } from "../../services/biddingAPI";
-// import Tooltip from "@material-tailwind/react";
+import { useBiddingCarByDealerIdQuery } from "../../services/biddingAPI";
+
 import TableComponent from "../../components/table/TableComponent";
-import { Link } from "react-router-dom";
+import { Link,useParams } from "react-router-dom";
 import { MdPendingActions } from "react-icons/md";
 import StatusDialogeBox from "../../ui/StatusDialogeBox";
 import BiddingDailogeBox from "../../ui/BiddingDialogeBox";
 import BiddingSetTime from "../../ui/BiddingSetTime";
-// import Tooltip from "@material-tailwind/react";
+
+
 const BiddingDealer = () => {
-  const { data, isLoading, error } = useBiddingAllCardQuery();
+  const {userId} = useParams()
+  console.log(userId)
+  const { data, isLoading, error } = useBiddingCarByDealerIdQuery();
   console.log(data);
+  
   if (isLoading) {
     return <p>Loading..</p>;
   }
@@ -106,7 +110,7 @@ const BiddingDealer = () => {
         return (
           <div>
             <div className="flex gap-2 justify-center items-center  ">
-               <Link>
+               <Link to={`/car/${cell.row.values.beadingCarId}/pendingreq`}>
                <div className="w- h-">
                   <MdPendingActions color="#b09b12" className="h-6 w-6" />
                </div>
