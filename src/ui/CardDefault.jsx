@@ -5,11 +5,12 @@ import { Link } from "react-router-dom";
 
 export function CardDefault({ data }) {
   console.log(data);
-
+const carid = data?.carId
+console.log(carid)
   return (
     <Card className="mt-6 w-96">
       <div className="p-2">
-        <CarouselCustomArrows />
+        <CarouselCustomArrows carId={carid} />
       </div>
       <CardBody>
         <Typography>{data.year}</Typography>

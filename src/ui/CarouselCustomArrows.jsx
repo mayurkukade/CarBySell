@@ -1,6 +1,23 @@
 import { Carousel, IconButton } from "@material-tailwind/react";
+import {useGetCarImageByIdQuery} from "../services/carAPI"
 
-export function CarouselCustomArrows() {
+// eslint-disable-next-line react/prop-types
+export function CarouselCustomArrows({carId}) {
+
+  console.log(carId)
+  const {data ,isLoading,error} = useGetCarImageByIdQuery()
+  console.log(data)
+
+  const getImageSrc = () => {
+    if (data) {
+      // Assuming data contains an image URL property
+      return data.url;
+    }
+    return null; // Or a placeholder image URL
+  };
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error fetching car image</div>;
   return (
     <Carousel
       className="rounded-xl "
@@ -53,12 +70,15 @@ export function CarouselCustomArrows() {
         </IconButton>
       )}
     >
-      <img
-        src="https://imgd-ct.aeplcdn.com/664x415/n/2jtdrbb_1693945.jpg?q=80"
-        alt="image 1"
-        className="h-full w-full object-contain"
-      />
-      <img
+      
+      {data && (
+        <img
+          src={getImageSrc()}
+          alt="Car Image"
+          className="h-full w-full object-contain"
+        />
+      )}
+      {/* <img
         src="https://imgd.aeplcdn.com/370x208/n/zgaerbb_1693951.jpg?q=80"
         alt="image 2"
         className="h-full w-full object-contain"
@@ -67,7 +87,7 @@ export function CarouselCustomArrows() {
         src="https://imgd.aeplcdn.com/370x208/n/7mudrbb_1693947.jpg?q=80"
         alt="image 3"
         className="h-full w-full object-contain"
-      />
+      /> */}
     </Carousel>
   );
 }

@@ -93,6 +93,15 @@ export const carApi = apiSlice.injectEndpoints({
         
       }),
       providesTags : ["CAR"],
+    }),
+
+    getCarImageById : builder.query({
+      query : () => ({
+        url : `/photo/get/88`,
+        method : 'GET',
+        
+      }),
+      providesTags : ["CAR"],
     })
   }),
 });
@@ -108,5 +117,6 @@ export const {
   useCarRemoveMutation,
   useUserAllCarRequestQuery,
   useGetAllUserConfirmQuery,
-  useGetPendingrequestQuery
+  useGetPendingrequestQuery,
+  useGetCarImageByIdQuery
 } = carApi;

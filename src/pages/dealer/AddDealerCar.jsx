@@ -7,6 +7,7 @@ import { useNavigate, useParams } from "react-router";
 
 export default function AddDealerCar() {
   const [carRegister] = useCarRegisterMutation()
+  const [mult, setMult] = React.useState([]);
   const [formData, setFormData] = useState({
     //features
     acFeature: false,
@@ -46,6 +47,10 @@ const date = new Date(); // Create a new Date object with the current date
  
   const formattedDate = `${year}-${month}-${day}`;
  // console.log(formattedDate)
+
+ const handleFileChange = (e) => {
+  setMult(Array.from(e.target.files));
+};
   const handleSubmit = async(event) => {
     event.preventDefault();
 
@@ -111,11 +116,9 @@ const date = new Date(); // Create a new Date object with the current date
   
   };
 
-  const [mult, setMult] = React.useState([]);
+  
 
-  const handleFileChange = (e) => {
-    setMult(Array.from(e.target.files));
-  };
+  
   return (
     <div className="flex justify-center">
       <div>
@@ -191,20 +194,7 @@ const date = new Date(); // Create a new Date object with the current date
 
           {/* third part */}
           <div className="flex">
-            {/* <div className="mt-5 w-full">
-              <Inputs
-                label={"bodyType"}
-                type={"text"}
-                name={"bodyType"}
-                value={formData.bodyType}
-                onChange={(event) =>
-                  setFormData({
-                    ...formData,
-                    bodyType: event.target.value,
-                  })
-                }
-              />
-            </div> */}
+          
             <div className="mt-5 w-full">
               <select
                 required
