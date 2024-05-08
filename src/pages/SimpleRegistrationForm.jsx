@@ -4,7 +4,6 @@ import {
   Button,
   Checkbox,
   Typography,
-
 } from "@material-tailwind/react";
 import { useCountries } from "use-react-countries";
 import {
@@ -16,6 +15,7 @@ import {
 import { Link } from "react-router-dom";
 import Inputs from "../forms/Inputs";
 import CardUi from "../ui/CardUi";
+import { Visibility, VisibilityOff } from "@material-ui/icons";
 
 export function SimpleRegistrationForm() {
   const [formStateData, setFormData] = useState({
@@ -48,13 +48,12 @@ export function SimpleRegistrationForm() {
       ...prevData,
       [name]: type === "checkbox" ? checked : value,
     }));
-  
+
     // Validate input fields
     if (type !== "checkbox") {
       validateInput(name, value);
     }
   };
-  
 
   const validateInput = (name, value) => {
     let error = "";
@@ -82,6 +81,9 @@ export function SimpleRegistrationForm() {
         break;
       case "area":
         error = value.trim() === "" ? "Area is required" : "";
+        break;
+      case "password":
+        error = value.trim() === "" ? "Password is required" : "";
         break;
       default:
         break;
@@ -115,11 +117,29 @@ export function SimpleRegistrationForm() {
     }
   
     if (!hasError) {
-      // Your form submission logic goes here
-      console.log("Form data submitted:", formStateData);
+      // Include password in the formStateData object
+      const formDataWithPassword = {
+        ...formStateData,
+        password: password,
+      };
+  
+      // Log the form data
+      console.log("Form data submitted:", formDataWithPassword);
+  
+      // Clear form fields
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        mobileNumber: "",
+        address: "",
+        city: "",
+        area: "",
+        agreeTerms: false,
+      });
+      setPassword("");
     }
   };
-  
 
   const { countries } = useCountries();
   const defaultCountryIndex = countries.findIndex(
@@ -130,14 +150,18 @@ export function SimpleRegistrationForm() {
   );
   const { name, flags, countryCallingCode } = countries[country];
 
+  //Password Visibility
+  const [showPassword, setShowPassword] = useState(false);
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className="h-auto mt-10 flex justify-center items-center">
       <CardUi color="transparent" shadow={false}>
-      
-          <Typography variant="h3" color="black" className="text-center">
-            Sign Up
-          </Typography>
-        
+        <Typography variant="h3" color="black" className="text-center">
+          Sign Up
+        </Typography>
 
         <form
           onSubmit={handleSubmit}
@@ -153,7 +177,11 @@ export function SimpleRegistrationForm() {
               value={formStateData.firstName}
               onChange={handleChange}
               error={errors.firstName}
+              required
             />
+            {errors.firstName && (
+              <Typography color="red">{errors.firstName}</Typography>
+            )}
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Last Name
             </Typography>
@@ -163,7 +191,11 @@ export function SimpleRegistrationForm() {
               value={formStateData.lastName}
               onChange={handleChange}
               error={errors.lastName}
+              required
             />
+            {errors.lastName && (
+              <Typography color="red">{errors.lastName}</Typography>
+            )}
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Email
             </Typography>
@@ -174,7 +206,11 @@ export function SimpleRegistrationForm() {
               value={formStateData.email}
               onChange={handleChange}
               error={errors.email}
+              required
             />
+            {errors.email && (
+              <Typography color="red">{errors.email}</Typography>
+            )}
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Mobile Number
             </Typography>
@@ -233,20 +269,41 @@ export function SimpleRegistrationForm() {
                 onChange={handleChange}
                 type={"number"}
                 error={errors.mobileNumber}
+                required
               />
             </div>
+            {errors.mobileNumber && (
+              <Typography color="red">{errors.mobileNumber}</Typography>
+            )}
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Password
             </Typography>
-            <Inputs
-              label={"Password"}
-              type={"password"}
+            <Input
+              label="Password"
               name="password"
-              value={password}
+              type={showPassword ? "text" : "password"}
+              value={formStateData.password}
               onChange={(e) => setPassword(e.target.value)}
               error={errors.password}
+              required
+              icon={
+                showPassword ? (
+                  <VisibilityOff
+                    onClick={handleTogglePassword}
+                    className="cursor-pointer"
+                  />
+                ) : (
+                  <Visibility
+                    onClick={handleTogglePassword}
+                    className="cursor-pointer"
+                  />
+                )
+              }
+              
             />
-
+            {errors.password && (
+              <Typography color="red">{errors.password}</Typography>
+            )}
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Address
             </Typography>
@@ -256,7 +313,11 @@ export function SimpleRegistrationForm() {
               value={formStateData.address}
               onChange={handleChange}
               error={errors.address}
+              required
             />
+            {errors.address && (
+              <Typography color="red">{errors.address}</Typography>
+            )}
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               City
             </Typography>
@@ -266,7 +327,11 @@ export function SimpleRegistrationForm() {
               value={formStateData.city}
               onChange={handleChange}
               error={errors.city}
+              required
             />
+            {errors.city && (
+              <Typography color="red">{errors.city}</Typography>
+            )}
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Area
             </Typography>
@@ -276,7 +341,11 @@ export function SimpleRegistrationForm() {
               value={formStateData.area}
               onChange={handleChange}
               error={errors.area}
+              required
             />
+            {errors.area && (
+              <Typography color="red">{errors.area}</Typography>
+            )}
           </div>
           <Checkbox
             label={
