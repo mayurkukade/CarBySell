@@ -45,7 +45,19 @@ export const dealerAPI = apiSlice.injectEndpoints({
         url: `/booking/getPendingBookingDetailsByDealerID?pageNo=0&dealerId=${id}`,
       }),
       providesTags: ["DEALERBOOKING"],
-    })
+    }),
+
+    addCarImages: builder.mutation({
+      query: ({ formData, lastCarId }) => ({
+        url: `/photo/add?carId=${lastCarId}`,
+        transerResponse:console.log(formData, lastCarId),
+        method: "POST",
+        body: formData,
+      }),
+      invalidatesTags: ["Dealer"],
+    }),
+    
+    
     
   }),
 });
@@ -56,6 +68,7 @@ export const {
   useGetDealerQuery,
   useGetEditDealerMutation,
   useGetAllDealerCompleteBookingQuery,
-  useGetAllDealerPendingBookingQuery
+  useGetAllDealerPendingBookingQuery,
+  useAddCarImagesMutation
   
 } = dealerAPI;

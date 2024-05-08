@@ -1,13 +1,13 @@
 import { useState } from "react";
 import Inputs from "../../forms/Inputs";
 import { Textarea } from "@material-tailwind/react";
-import React from "react";
+// import React from "react";
 import { useCarRegisterMutation } from "../../services/carAPI";
 import { useNavigate, useParams } from "react-router";
 
 export default function AddDealerCar() {
   const [carRegister] = useCarRegisterMutation()
-  const [mult, setMult] = React.useState([]);
+//  const [mult, setMult] = React.useState([]);
   const [formData, setFormData] = useState({
     //features
     acFeature: false,
@@ -48,9 +48,9 @@ const date = new Date(); // Create a new Date object with the current date
   const formattedDate = `${year}-${month}-${day}`;
  // console.log(formattedDate)
 
- const handleFileChange = (e) => {
-  setMult(Array.from(e.target.files));
-};
+//  const handleFileChange = (e) => {
+//   setMult(Array.from(e.target.files));
+// };
   const handleSubmit = async(event) => {
     event.preventDefault();
 
@@ -111,7 +111,7 @@ const date = new Date(); // Create a new Date object with the current date
    
     if(res?.data?.status === 'success'){
       alert('car added')
-      navigate(-1)
+      navigate(`/dealer/${id}/uploadimage`)
     }
   
   };
@@ -484,22 +484,23 @@ const date = new Date(); // Create a new Date object with the current date
           {/* tenth part */}
 
           <div className="mt-5">
-          <input
+          {/* <input
         type="file"
         accept="image/*"
         multiple
+        required
         onChange={handleFileChange}
-      />
+      /> */}
 
       <div>
-        {mult.map((file, index) => (
+        {/* {mult.map((file, index) => (
           <img
             key={index}
             src={URL.createObjectURL(file)}
             alt={`Image ${index + 1}`}
             style={{ maxWidth: '500px', maxHeight: '500px', margin: '5px' }}
           />
-        ))}
+        ))} */}
       </div>
           </div>
 
