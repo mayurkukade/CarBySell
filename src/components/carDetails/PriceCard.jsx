@@ -89,17 +89,8 @@ const PriceCard = ({
         </div>
       </div>
       <hr className="border-gray-400" />
-      <div className="flex justify-between align-middle items-center my-3">
-        <div>
-          <div className="text-orange-700 text-xl font-bold font-[latto]">
-            ₹6978/month
-          </div>
-          <div className="text-xs font-[lotto]">On Zero down Payment</div>
-          <div className="uppercase text-blue-900 text-xs font-[lotto]">
-            Check Eligibility
-          </div>
-        </div>
-        <div>
+      <div className="flex justify-center align-middle items-center my-3">
+        <div className="text-center">
           <div className="text-xl font-bold text-black font-[latto]">
             ₹{price} Lakh
           </div>
