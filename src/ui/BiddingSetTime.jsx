@@ -12,20 +12,48 @@ import {
 
 import {useStartBiddingSetTimeMutation} from "../services/biddingAPI"
  
-export default function BiddingSetTime() {
+// eslint-disable-next-line react/prop-types
+export default function BiddingSetTime({userid, biddingcarid}) {
   const [open, setOpen] = React.useState(false);
  
   const handleOpen = () => setOpen(!open);
 
- const [settime , setSettime] = React.useState("")
+ const [settime, setSettime] = React.useState({
+    beadingCarId: 0,
+    userId: 0,
+    basePrice: 0,
+    durationMinutes: "", // Corrected property name
+  });
   const [startBiddingSetTime] = useStartBiddingSetTimeMutation();
 
- 
+ const handleDurationMinutesChange = (e) => {
+    setSettime({
+      ...settime,
+      durationMinutes: Number(e.target.value), // Ensure it's a number
+    });
+  };
+
+  const handlebasePriceChange = (e) => {
+    setSettime({
+      ...settime,
+      basePrice: Number(e.target.value),
+    });
+  };
   console.log(settime)
 
   async  function formsubmit  ()  {
-    const res = await  startBiddingSetTime (settime)
-console.log(res)
+    
+    const setTimeData = {
+      beadingCarId: biddingcarid,
+      userId: userid,
+      basePrice: Number(settime.basePrice),
+      durationMinutes: settime.durationMinutes,
+    };
+
+    console.log(setTimeData);
+
+    const res1 = await startBiddingSetTime(setTimeData);
+    console.log(res1);
   }
   return (
     <>
@@ -42,7 +70,22 @@ console.log(res)
       >
         <DialogHeader>Set Bidding Time</DialogHeader>
         <DialogBody>
-           <Input label="set time" value={settime} onChange={(e) => setSettime(e.target.value)}/>
+        <div className="mt-5">
+            <Input
+              label="Base Price"
+              value={settime.basePrice}
+              onChange={handlebasePriceChange}
+              type="number"
+            />
+          </div>
+        <div className="mt-5">
+            <Input
+              label="Set time (minutes)"
+              value={settime.durationMinutes}
+              onChange={handleDurationMinutesChange}
+              type="number"
+            />
+          </div>
         </DialogBody>
         <DialogFooter>
           <Button
