@@ -96,10 +96,19 @@ export const carApi = apiSlice.injectEndpoints({
     }),
 
     getCarImageById : builder.query({
-      query : () => ({
-        url : `/photo/get/88`,
+      query : ({carId}) => ({
+        url : `/photo/get/${carId}`,
         method : 'GET',
-        
+        transferResponse: console.log(carId),
+        responseHandler: (response) => {
+          // Check response headers (e.g., Content-Type) to determine format
+          if (response.headers.get('Content-Type').startsWith('image/')) {
+            return response.blob(); // Assuming response is an image blob
+          } else {
+            // Handle unexpected formats (throw error or return default value)
+            throw new Error('Unexpected response format');
+          }
+        }
       }),
       providesTags : ["CAR"],
     })

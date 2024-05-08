@@ -5,15 +5,12 @@ import {useGetCarImageByIdQuery} from "../services/carAPI"
 export function CarouselCustomArrows({carId}) {
 
   console.log(carId)
-  const {data ,isLoading,error} = useGetCarImageByIdQuery()
+  const {data ,isLoading,error} = useGetCarImageByIdQuery({carId})
   console.log(data)
 
-  const getImageSrc = () => {
-    if (data) {
-      // Assuming data contains an image URL property
-      return data.url;
-    }
-    return null; // Or a placeholder image URL
+  const handleImageData = (blob) => {
+    const url = URL.createObjectURL(blob); // Create a temporary URL for the blob
+    return <img src={url} alt="Car Image" className="h-full w-full object-contain" />;
   };
 
   if (isLoading) return <div>Loading...</div>;
@@ -71,13 +68,7 @@ export function CarouselCustomArrows({carId}) {
       )}
     >
       
-      {data && (
-        <img
-          src={getImageSrc()}
-          alt="Car Image"
-          className="h-full w-full object-contain"
-        />
-      )}
+      {data && handleImageData(data)}
       {/* <img
         src="https://imgd.aeplcdn.com/370x208/n/zgaerbb_1693951.jpg?q=80"
         alt="image 2"
