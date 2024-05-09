@@ -32,6 +32,7 @@ import DealerAllPendingRequest from "./pages/dealer/DealerAllPendingRequest";
 import BiddingCarDetailsById from "./pages/bidding/BiddingCarDetailsById";
 import DealerPendingRequest from "./pages/dealer/DealerPendingRequest";
 import BiddingDealerPendingReq from "./pages/bidding/BiddingDealerPendingReq";
+import Uploadimages2 from "./ui/UploadImages2";
 
 
 export default function App() {
@@ -68,6 +69,7 @@ export default function App() {
           >
             <Route path="/dealer/:id" element={<DealerDashboard />} />
             <Route path="/dealer/:id/addcar" element={<AddDealerCar />} />
+            <Route path="/dealer/:id/uploadimage" element={<Uploadimages2 />} />
             <Route path="/dealer/:id/car/edit/:carId" element={<EditDealerCar />} />
             <Route path="/dealer/:id/booking/confirm" element={<OrderDealer/>}/>
             <Route path="/dealer/:id/allpending" element={<DealerAllPendingRequest/>}/>
@@ -86,6 +88,8 @@ export default function App() {
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
           <Route path="/cookiepolicy" element={<CookiePolicy />} />
+
+          
 
           
         </Route>
