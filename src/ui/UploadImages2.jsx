@@ -1,52 +1,50 @@
+
+
 import React from "react";
 import { useAddCarImagesMutation } from "../services/dealerAPI";
 import { Button } from "@material-tailwind/react";
 import { useParams } from "react-router-dom";
 import { useDealerIdByCarQuery } from "../services/carAPI";
+import { useNavigate } from "react-router-dom";
 
 export default function Uploadimages2() {
   const [images, setImages] = React.useState([]);
+  const navigate = useNavigate();
   const { id } = useParams();
   const { data } = useDealerIdByCarQuery({ id, pageNo: 0 });
+
   const lastCarId = data?.list?.length > 0 ? data?.list[data?.list.length - 1].carId : null;
+  console.log(lastCarId)
   const [addCarImages] = useAddCarImagesMutation();
 
   const readImages = async (event) => {
     const files = Array.from(event.target.files);
-
-    const base64Strings = await Promise.all(
-      files.map((file) => {
-        return new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onload = () => {
-            const base64String = reader.result.split(",")[1];
-            resolve(base64String);
-          };
-          reader.onerror = reject;
-          reader.readAsDataURL(file);
-        });
-      })
-    );
-
-    setImages(base64Strings);
+     setImages(files);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
+    if (!lastCarId || !images.length) {
+      console.error("lastCarId or images is not defined");
+      return;
+    }
+  
     const formData = new FormData();
-
-    // Append each base64 string as a separate "file" part in FormData
-    images.forEach((base64String, index) => {
-      formData.append(`file${index}`, base64String); // Use a unique key for each file
-    });
-
+    for (const image of images) {
+      formData.append('file', image);
+    }
+  
     try {
-      const response = await addCarImages({ formData, lastCarId });
+      
+      const response = await addCarImages({ formData, lastCarId }).unwrap();
       console.log(response);
+      console.log("try block is running")
+      
     } catch (error) {
       console.error(error);
     }
+    navigate(-2)
   };
 
   return (
